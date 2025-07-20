@@ -1,0 +1,71 @@
+nav{
+  padding:1rem 7rem;
+  box-shadow: 0px 0px .7rem rgb(118, 117, 117);
+  position:sticky;
+  top:0;
+  z-index:10;
+  background: rgb(254, 252, 252);
+  
+  a{
+    &:hover{
+      font-family:Verdana, Geneva, Tahoma, sans-serif;
+      color:red;
+    }
+  }
+
+  img{
+    width:2.5rem;
+    border:1px solid rgb(236, 229, 229);
+    border-radius: 50%;
+  }
+}
+
+.topdiv{
+  display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap:1.5rem;
+  row-gap: .8rem;
+  justify-content: space-evenly;
+}
+
+.inputdiv{
+  flex:1;
+  display:flex;
+  border:1px solid rgb(210, 209, 209);
+  padding:.4rem;
+  gap:.3rem;
+  align-items: center;
+
+  input{
+    flex:1;
+    border:0;
+    background: transparent;
+    outline:0;
+  }
+}
+
+.login{
+  display: flex;
+  align-items: center;
+  gap:.4rem;
+}
+
+.bottomdiv{
+  display: flex;
+  gap:.7rem;
+  justify-content: center;
+  margin-top:.8rem;
+}
+
+.cart{
+  position: relative;
+}
+
+.cartQuantity{
+  position: absolute;
+  top:-70%;
+  left:50%;
+  border-radius: 50%;
+  padding:.1rem .3rem;
+}

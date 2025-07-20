@@ -1,0 +1,21 @@
+.overlay{
+  position: fixed;
+  z-index: 100;
+  top:0;
+  left:0;
+  height:100dvh;
+  width:100%;
+  display:grid;
+  place-items: center;
+  background: rgb(40, 39, 39,0.8);
+}
+
+.closeModal{
+  cursor:pointer;
+  user-select: none;
+  position: absolute;
+  right:10px;
+  top:10px;
+  font-weight: bold;
+}
+

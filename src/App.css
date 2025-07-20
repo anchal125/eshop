@@ -1,0 +1,114 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+
+.app{
+  overflow-wrap: break-word;
+  position: relative;
+  min-height: 100dvh;
+  user-select: none
+
+  
+}
+
+a{
+  text-decoration: none;
+  color:black
+}
+
+input,select{
+  padding:.3rem;
+}
+
+button{
+  border:none;
+  cursor:pointer;
+  &:active{
+    transform:scale(1.04);
+  }
+}
+
+small{
+  color:grey;
+}
+
+.stheme{
+  background: red;
+  color:white;     
+}
+
+.displayImg{
+  width:100%;
+  height:max(60vh,200px);
+  object-fit: contain;
+  display: block;
+  margin:auto;
+}
+
+.middle{
+  padding:1rem 7rem 230px;
+}
+
+.cards {
+  margin-top: 2.5rem;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.card {
+  width: 100%;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width:1000px)
+{
+  nav{
+    padding: 1rem 4rem !important;
+  }
+  .middle{
+    padding: 1rem 4rem 230px !important;
+  }
+}
+
+@media screen and (max-width:768px){
+  html{
+    font-size:15px;
+  }
+  nav{
+    padding: 1rem 2rem !important;
+  }
+  .middle{
+    padding: 1rem 2rem 220px !important;
+  }
+
+}
+
+@media screen and (max-width:600px){
+  html{
+    font-size:14px;
+  }
+  nav{
+    padding: 1rem 1rem !important;
+  }
+  .middle{
+    padding: 1rem 1rem 283px !important;
+  }
+}
+
+@media screen and (max-width:450px){
+  html{
+    font-size:13.5px;
+  }
+
+  .middle{
+    padding: 1rem 1rem 310px !important;
+  }
+
+}

@@ -1,0 +1,17 @@
+.orderpg>*{
+  margin-top: .7rem;
+}
+
+.orderpg button{
+  margin-top: .7rem;
+  padding: .4rem;
+}
+
+.orderSummary{
+  background: rgb(232, 230, 230);
+  padding: .4rem .8rem;
+  >*{
+    margin-top: .5rem;
+  }
+}
+

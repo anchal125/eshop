@@ -6,6 +6,7 @@ import { CategorySection } from "../Components/CategorySection"
 import { Products } from "../Components/Products"
 import { useGetProducts } from "../hooks/useGetProducts";
 import { Link } from 'react-router-dom';
+import { ScrollText } from "../Components/ScrollText"
 
 export const Home = () => {
   const { products, loading, error } = useGetProducts();
@@ -27,7 +28,7 @@ export const Home = () => {
             </ul>
 
         </div>
-        
+
         <div className={styles.right}>
           <img src={shopping} alt="shopping" />
           <div className={styles.text}>
@@ -38,6 +39,8 @@ export const Home = () => {
           </div>
         </div>
       </section>
+
+      <ScrollText/>
 
       <InfoSection/>
 

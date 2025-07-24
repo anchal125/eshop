@@ -1,0 +1,14 @@
+.scrollText{
+  background: black;
+  color:white;
+  position: absolute;
+  left:0;
+  right:0;
+  padding:.6rem;
+  font-size: 1.8rem;
+  margin-top: 2rem;
+  display: flex;
+  gap:min(10vw,5rem);
+  overflow: hidden;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+} 

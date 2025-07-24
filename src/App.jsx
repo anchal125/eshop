@@ -4,7 +4,7 @@ import { Navbar } from './Components/Navbar'
 import { Footer } from './Components/Footer'
 import { Home } from './Pages/Home'
 import { Shop } from './Pages/Shop'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Cart } from './Pages/Cart'
 import { useSelector } from 'react-redux'
 import { useModal } from './hooks/useModal'

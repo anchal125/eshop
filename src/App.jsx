@@ -39,7 +39,7 @@ function App() {
       <div className="middle" >
 
         <Routes>
-          <Route exact path="/eshop" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/Shop" element={<Shop input={input}/>} />
           <Route path="/Cart" element={<Cart cart={cart} setModalOpen={setModalOpen} shippingAddress={shippingAddress} setModalType={setModalType}/>} />
           <Route path="/checkout" element={<Checkout formData={formData} shippingAddress={shippingAddress} setModalOpen={setModalOpen} cart={cart}/>} />

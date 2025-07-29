@@ -9,7 +9,7 @@ import ScrollToTop from './Components/ScrollToTop.js';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename='/eshop'>
+    <BrowserRouter>
       <Provider store={store}>
         <ScrollToTop/>
         <App />

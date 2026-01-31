@@ -1,15 +1,25 @@
 import { useRef, useState } from "react"
 import styles from "./Login.module.css"
 import { UseOutsideClick } from "../hooks/UseOutsideClick"
+import { checkPassword } from "../utils/Checker"
+import { toast } from "react-toastify"
 
 export const Login = ({setModalOpen,setName}) => {
   const [login,setLogin]=useState("Sign Up")
   const formRef=useRef()
   const nameRef=useRef()
+  const passwordRef=useRef()
+  const [passwordError,setPasswordError]=useState("")
   UseOutsideClick(formRef,()=>setModalOpen(false))
 
   const handleSubmit=(e)=>{
     e.preventDefault();
+    let {valid,error}=checkPassword(passwordRef.current.value)
+    if(!valid){
+      setPasswordError(error)
+      return
+    }
+    toast.success("login succesful")
     setModalOpen(false)
     setName(nameRef.current.value.split(" ")[0])
   }
@@ -45,11 +55,13 @@ export const Login = ({setModalOpen,setName}) => {
       <div>
         <label htmlFor="password">Password</label>
         <input
+          ref={passwordRef}
           type="password"
           id="password"
           placeholder="Enter your password"
           required
         />
+        {passwordError && <small style={{color:"red"}}>{passwordError}</small>}
       </div>
       
 

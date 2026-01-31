@@ -1,5 +1,6 @@
 import {useRef } from "react"
 import { UseOutsideClick } from "../hooks/UseOutsideClick"
+import { checkFormData } from "../utils/Checker"
 
 export const ShippingForm = ({setShippingAddress,formData,setModalOpen,setFormData}) => {
   const formRef=useRef()
@@ -8,11 +9,13 @@ export const ShippingForm = ({setShippingAddress,formData,setModalOpen,setFormDa
 
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.id]:{...formData[e.target.id],value:e.target.value}})
-  } 
+  }
 
   const handleSubmit=(e)=>{
-    e.preventDefault()
+    e.preventDefault() 
+    if(!checkFormData(formData,setFormData)) return  
     const data=Object.fromEntries(Object.values(formData).map(item=>[item.label,item.value]))
+    console.log(data)
     setShippingAddress(formData.Address.value+", "+formData.City.value+", "+formData.State.value+", "+formData.Country.value)
     setModalOpen(false) 
   } 
@@ -32,6 +35,8 @@ export const ShippingForm = ({setShippingAddress,formData,setModalOpen,setFormDa
                 placeholder={item.placeholder}
                 required
               />
+              <br />
+              {item.error && <small style={{color:"red"}}>{item.error}</small>}
             </div>
           );
         } else if (item.inputType === 'select') {

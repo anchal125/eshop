@@ -1,7 +1,7 @@
 .cards{
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
   .card{
     height:200px;
-    overflow: hidden;
     position: relative;
 
     img{

@@ -10,7 +10,7 @@ export const useModal = () => {
       type: "email",
       inputType: "input",
       placeholder: "Enter your email",
-      value: ""
+      value: "",
     },
     firstName: {
       id: "firstName",
@@ -18,7 +18,8 @@ export const useModal = () => {
       type: "text",
       inputType: "input",
       placeholder: "First Name",
-      value: ""
+      value: "",
+      error:""
     },
     lastName: {
       id: "lastName",
@@ -27,7 +28,8 @@ export const useModal = () => {
       type: "text",
       inputType: "input",
       placeholder: "Last Name",
-      value: ""
+      value: "",
+      error:""
     },
     Mobile: {
       id: "Mobile",
@@ -35,7 +37,8 @@ export const useModal = () => {
       type: "tel",
       inputType: "input",
       placeholder: "Mobile Number",
-      value: ""
+      value: "",
+      error:""
     },
     Address: {
       id: "Address",
@@ -43,7 +46,8 @@ export const useModal = () => {
       type: "text",
       inputType: "input",
       placeholder: "Enter Address",
-      value: ""
+      value: "",
+      error:""
     },
     Country: {
       id: "Country",
@@ -59,7 +63,8 @@ export const useModal = () => {
       type: "text",
       inputType: "input",
       placeholder: "ZIP Code",
-      value: ""
+      value: "",
+      error:""
     },
     City: {
       id: "City",
@@ -67,7 +72,8 @@ export const useModal = () => {
       type: "text",
       inputType: "input",
       placeholder: "City",
-      value: ""
+      value: "",
+      error:""
     },
     State: {
       id: "State",

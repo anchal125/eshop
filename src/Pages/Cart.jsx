@@ -1,8 +1,8 @@
-import React from 'react';
 import cartimg from "../assets/cart.png";
 import styles from "./Cart.module.css";
 import { CartProduct } from '../Components/CartProduct';
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 export const Cart = ({cart,setModalOpen,shippingAddress,setModalType}) => {
   const { products, totalPrice, totalQuantity,totalItems } = cart;
@@ -11,7 +11,7 @@ export const Cart = ({cart,setModalOpen,shippingAddress,setModalType}) => {
     setModalOpen(true);
     setModalType("shipping")
     navigate("/checkout")
-    alert("fill your details on the next page")
+    toast.info("Fill your details to proceed")
   }
 
   return (

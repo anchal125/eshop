@@ -23,14 +23,14 @@ export const ScrollText = () => {
         transform: 'translateX(-200%)',
         ease: "none",
         duration: 2,
-        repeat:-1,
+        repeat: -1,
       });
     } else {
       gsap.to(children, {
         transform: 'translateX(0%)',
         ease: "none",
         duration: 2,
-        repeat:-1,
+        repeat: -1,
       });
     }
 

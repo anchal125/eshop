@@ -1,22 +1,39 @@
 import { categories} from "../utils/Data"
-import shopping from "../assets/shopping.png"
+import shopping1 from "../assets/shopping1.png"
+import shopping2 from "../assets/shopping2.png"
+import shopping3 from "../assets/shopping3.png"
 import styles from "./Home.module.css"
 import { InfoSection } from "../Components/InfoSection"
 import { CategorySection } from "../Components/CategorySection"
 import { Products } from "../Components/Products"
 import { useGetProducts } from "../hooks/useGetProducts";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ScrollText } from "../Components/ScrollText"
+import { useEffect, useState } from "react"
+import { HiCursorClick } from "react-icons/hi";
 
 export const Home = () => {
   const { products, loading, error } = useGetProducts();
+  const [imageIndex,setImageIndex]=useState(0)
+  const images=[shopping1,shopping2,shopping3]
+  const navigate=useNavigate()
+
+  useEffect(()=>{
+    let id=setInterval(()=>{
+      setImageIndex(prev => (prev + 1) % images.length)
+    },3000)
+    return ()=>{
+      clearInterval(id)
+    }
+  },[])
   
   if(error){
-    return <p>error</p>
+    console.log(error.messsage)
+    navigate("/error")
   }
 
   return (
-    <div>            
+    <div className={styles.home}>            
       <section className={styles.firstSection}>
         <div className={styles.left}>
           <p className="stheme">SHOP BY CATEGORY</p>
@@ -30,12 +47,13 @@ export const Home = () => {
         </div>
 
         <div className={styles.right}>
-          <img src={shopping} alt="shopping" />
+          <img src={images[imageIndex]} alt="shopping" />
           <div className={styles.text}>
             <small>Anchal| e-Shop</small>
             <h2>WELCOME TO E-SHOP</h2>
             <p>MILLION+ PRODUCTS</p>
             <Link to="/Shop"><button className="stheme">SHOP NOW</button></Link>
+            <HiCursorClick className={styles.cursor} size={23} style={{position:"relative",right:"8px",top:"25px"}}/>
           </div>
         </div>
       </section>

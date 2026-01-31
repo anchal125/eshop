@@ -54,6 +54,10 @@
       object-position: top center;
     }
 
+    .cursor{
+      animation: point 1s infinite;
+    }
+
     .text{
       position:absolute;
       top:15%;
@@ -63,6 +67,7 @@
     button{
       padding:.4rem;
       margin-top:.6rem;
+      animation:highlight 1s infinite;
     }
 
   }
@@ -73,5 +78,18 @@
   
   h2{
     text-align: center;
+  }
+}
+
+@keyframes point {
+  100%{
+    transform:translate(-6px,-8px)
+  }
+}
+
+@keyframes highlight {
+  100%{
+    transform:scale(1.08);
+    border:2px solid black;
   }
 }

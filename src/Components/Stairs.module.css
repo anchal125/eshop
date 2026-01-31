@@ -1,0 +1,22 @@
+.stairsContainer {
+  height: 100dvh;
+  z-index: 10000;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+}
+
+
+.stairs {
+  height: 100%;
+  display: flex;
+  width: 100%;
+
+  .stair {
+    width: 20%;
+    height: 100%;
+    background: black;
+  }
+}

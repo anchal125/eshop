@@ -1,5 +1,5 @@
 .cards{
-  grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
   margin-top: 8rem !important;
 
   .card{
@@ -10,7 +10,6 @@
     text-align: center;
     box-shadow: 0 0 .3rem rgb(154, 152, 152);
     position: relative;
-    overflow: hidden;
 
     &::after{
       content:"";

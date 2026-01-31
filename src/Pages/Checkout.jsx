@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { CheckoutInfo } from "../Components/CheckoutInfo";
 import styles from "./Checkout.module.css";
+import { toast } from "react-toastify";
 
 
 export const Checkout = ({formData,shippingAddress,setModalOpen,cart}) => {
@@ -10,9 +11,10 @@ export const Checkout = ({formData,shippingAddress,setModalOpen,cart}) => {
     e.preventDefault(); 
     if(shippingAddress){
       navigate("/Order")
+      toast.info("Order placed")
     }
     else{
-      alert("Fill shipping/billing details")
+      toast.error("Fill shipping/billing details")
     }
     
   }

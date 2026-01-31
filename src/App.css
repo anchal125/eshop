@@ -5,6 +5,7 @@
 }
 
 .app{
+  overflow: hidden;
   overflow-wrap: break-word;
   position: relative;
   min-height: 100dvh;
@@ -59,11 +60,12 @@ small{
   width: 100%;
   border-radius: 0.4rem;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .card:hover {
-  transform: scale(1.05);
-}
+  background: rgb(213, 211, 211);
+} 
 
 @media screen and (max-width:1000px)
 {

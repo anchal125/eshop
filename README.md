@@ -27,5 +27,5 @@ A modern e-commerce web application built using React and Redux.
 
 ## ⚙️ Installation
 
-npm install
-npm run dev
+- npm install
+- npm run dev

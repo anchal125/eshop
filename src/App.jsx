@@ -69,7 +69,7 @@ function App() {
           <Route path="/Shop" element={<Shop input={input}/>} />
           <Route path="/Cart" element={<Cart cart={cart} setModalOpen={setModalOpen} shippingAddress={shippingAddress} setModalType={setModalType}/>} />
           <Route path="/wishList" element={<WishList/>}/>
-          <Route path="/checkout" element={<Checkout formData={formData} shippingAddress={shippingAddress} setModalOpen={setModalOpen} cart={cart}/>} />
+          <Route path="/checkout" element={<Checkout formData={formData} shippingAddress={shippingAddress} setModalOpen={setModalOpen} setModalType={setModalType} cart={cart}/>} />
           <Route path="/Order" element={<OrderSummary shippingAddress={shippingAddress} cart={cart}/>}/>
           <Route path="/About" element={<About />}/>
           <Route path="/Product/:name/:id" element={<Product/>}/>

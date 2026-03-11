@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { Accordian } from "./Accordian"
 
-export const CheckoutInfo = ({formData,setModalOpen}) => {
+export const CheckoutInfo = ({formData,setModalOpen,setModalType}) => {
   const [active,setActive]=useState(2)
   return (
     <>
-      <span onClick={()=>setModalOpen(true)} style={{color:'blue',cursor:"pointer"}}>Change Shipping/Billing Info</span>
+      <span onClick={()=>{setModalOpen(true);setModalType('shipping')}} style={{color:'blue',cursor:"pointer"}}>Change Shipping/Billing Info</span>
       <Accordian active={active} index={0} setActive={setActive}>
         <h3>Billing Information</h3>
         {active==0 && Object.values(formData).slice(0,4).map(item=>

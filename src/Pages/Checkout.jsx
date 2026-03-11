@@ -4,7 +4,7 @@ import styles from "./Checkout.module.css";
 import { toast } from "react-toastify";
 
 
-export const Checkout = ({formData,shippingAddress,setModalOpen,cart}) => {
+export const Checkout = ({formData,shippingAddress,setModalOpen,cart,setModalType}) => {
   const { products, totalPrice } = cart
   const navigate=useNavigate()
   const handleSubmit=(e)=>{
@@ -24,7 +24,7 @@ export const Checkout = ({formData,shippingAddress,setModalOpen,cart}) => {
       <h2>Checkout</h2>
       <div className={styles.divisions}>
         <div className={styles.checkoutLeft}>
-          <CheckoutInfo formData={formData} setModalOpen={setModalOpen}/>
+          <CheckoutInfo formData={formData} setModalOpen={setModalOpen} setModalType={setModalType}/>
         </div>
  
         <div className={styles.checkoutRight}>

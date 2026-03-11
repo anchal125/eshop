@@ -14,6 +14,7 @@ export const Navbar = ({ input, setInput, setModalOpen, setModalType, name }) =>
     if (location.pathname === "/") setTabIndex(0)
     else if (location.pathname === "/Shop") setTabIndex(1)
     else if (location.pathname === "/About") setTabIndex(2)
+    else setTabIndex()
   }, [location.pathname])
 
   const handleSearch = () => {

@@ -40,7 +40,7 @@ export const Shop = ({ input }) => {
 
   const filteredProducts = input.trim()
     ? products.filter(item =>
-        item.title.toLowerCase().includes(input.toLowerCase())
+        item.title.toLowerCase().includes(input.trim().toLowerCase())
       )
     : products;
 

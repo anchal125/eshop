@@ -11,7 +11,9 @@ export const Cart = ({cart,setModalOpen,shippingAddress,setModalType}) => {
     setModalOpen(true);
     setModalType("shipping")
     navigate("/checkout")
-    toast.info("Fill your details to proceed")
+    setTimeout(()=>{
+      toast.info("Fill your details to proceed")
+    },2000)
   }
 
   return (

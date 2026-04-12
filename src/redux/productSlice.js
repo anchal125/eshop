@@ -18,8 +18,6 @@ export const fetchProducts=createAsyncThunk('products/fetchProducts',async(_,thu
   catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
-  
-
 })
 
 

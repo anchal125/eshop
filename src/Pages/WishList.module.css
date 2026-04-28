@@ -6,7 +6,7 @@
   flex-direction: column;
 
   h3 {
-    color: rgb(173, 171, 171);
+    color: var(--muted-color);
   }
 }
 
@@ -20,7 +20,7 @@
 
   .card {
     padding: 1rem;
-    box-shadow: 0px 0px 6px grey;
+    box-shadow: 0px 0px 6px var(--muted-color);
 
     img {
       height: 200px;

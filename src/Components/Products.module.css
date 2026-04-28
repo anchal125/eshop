@@ -3,7 +3,7 @@
 }
 
 .productCard{
-  box-shadow: 0 0 .3rem rgb(154, 152, 152);
+  box-shadow: 0 0 .3rem var(--shadow-color);
   padding: .65rem;
   img{
     height:200px;
@@ -26,7 +26,7 @@
   }
 
   button{
-    padding:.3rem .6rem;
+    padding:.3rem;
     border-radius: 50%;
 
     .add{

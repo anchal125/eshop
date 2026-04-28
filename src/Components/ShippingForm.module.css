@@ -1,0 +1,26 @@
+.form {
+  padding: 1rem;
+}
+
+.fieldGroup {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap:.5rem;
+
+  div{
+    flex:1;
+
+    input{
+      width:100%;
+    }
+  }
+}
+
+.error {
+  color: var(--accent-color);
+}
+
+.button {
+  padding: 0.3rem;
+}

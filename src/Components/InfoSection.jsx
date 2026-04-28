@@ -19,8 +19,8 @@ export const InfoSection = () => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: card,
-          start: "top 90%",
-          end: "top 90%",
+          start: "top 92%",
+          end: "top 92%",
           scrub: 5,
         },
       });

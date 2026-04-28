@@ -8,23 +8,26 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import ScrollToTop from './Components/ScrollToTop.js';
 import { ToastContainer } from 'react-toastify';
+import { ModalContextProvider } from './Context/ModalContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <ScrollToTop />
-        <Stairs>
-          <App />
-        </Stairs>
-        <ToastContainer
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          draggable
-          pauseOnHover
-          style={{ marginTop: 0 }} />
+        <ModalContextProvider>
+          <ScrollToTop />
+          <Stairs>
+            <App />
+          </Stairs>
+          <ToastContainer
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            draggable
+            pauseOnHover
+            style={{ marginTop: 0 }} />
+        </ModalContextProvider>
       </Provider>
     </BrowserRouter>
   </StrictMode>,

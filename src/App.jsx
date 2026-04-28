@@ -1,15 +1,18 @@
 import { Route, Routes} from 'react-router-dom'
-import { useLocalStorageSync } from './hooks/UseLocalStorageSync'
+import { useLocalStorageSync } from './hooks/useLocalStorageSync'
+import { ShippingFormTemplate } from './utils/Data'
 import { Navbar } from './Components/Navbar'
 import { Footer } from './Components/Footer'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useSelector } from 'react-redux'
-import { useModal } from './hooks/useModal'
 import { Modal } from './Components/Modal'
 import { ShippingForm } from './Components/ShippingForm'
 import { Login } from './Components/Login'
 import { Suspense,lazy } from 'react'
 import { Loader } from './Components/Loader';
+import { ModalContext } from './Context/ModalContext'
+import { CustomCursor } from './Components/CustomCursor'
+import { deriveAddress } from './utils/helpers'
 
 const Home = lazy(() =>
   import("./Pages/Home").then(module => ({ default: module.Home }))
@@ -39,45 +42,52 @@ const Error = lazy(() =>
   import("./Pages/Error").then(module => ({ default: module.Error }))
 );
 
+
+
 function App() {
-  const {modalOpen,setModalOpen,formData,setFormData,modalType,setModalType}=useModal()
-  const [input,setInput]=useState('')
+  const [theme,setTheme]=useState(JSON.parse(localStorage.getItem("theme")) || 'light')
+  const [shippingFormData, setShippingFormData] = useState(JSON.parse(localStorage.getItem("shippingFormData")) || ShippingFormTemplate) ;
+  const [input,setInput]=useState('') 
   const cart = useSelector(state => state.cart);
-  const [shippingAddress,setShippingAddress]=useState(JSON.parse(localStorage.getItem("shippingAddress")) || '')
+  const shippingAddress=deriveAddress(shippingFormData)
   const [name,setName]=useState("")
+  const {modalOpen,setModalOpen}=useContext(ModalContext) 
 
   useLocalStorageSync("cart", cart);
-  useLocalStorageSync("shippingAddress", shippingAddress);
-  useLocalStorageSync("formData", formData);
+  useLocalStorageSync("shippingFormData", shippingFormData);
+  useLocalStorageSync("theme", theme);
 
   return (
-    <div className="app">
-      {modalOpen && <Modal setModalOpen={setModalOpen}>
-        
-        {modalType==="shipping" && <ShippingForm setShippingAddress={setShippingAddress} formData={formData} setFormData={setFormData} setModalOpen={setModalOpen}/>}
+    <div data-theme={theme} className="app">
+      <CustomCursor/>
 
-        {modalType==="login" && <Login setName={setName} setModalOpen={setModalOpen}/>} 
+      {modalOpen && <Modal setModalOpen={setModalOpen} className={`${modalOpen}Modal`}>
+        
+        {modalOpen==="shipping" && <ShippingForm shippingFormData={shippingFormData} setShippingFormData={setShippingFormData}/>}
+
+        {modalOpen==="login" && <Login setName={setName}/>} 
         
       </Modal>}
 
-      <Navbar name={name} input={input} setInput={setInput} setModalOpen={setModalOpen} setModalType={setModalType}/>
+      <Navbar name={name} input={input} setInput={setInput} theme={theme} setTheme={setTheme}/>
       <div className="middle" >
 
-      <Suspense fallback={<Loader/>}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Shop" element={<Shop input={input}/>} />
-          <Route path="/Cart" element={<Cart cart={cart} setModalOpen={setModalOpen} shippingAddress={shippingAddress} setModalType={setModalType}/>} />
-          <Route path="/wishList" element={<WishList/>}/>
-          <Route path="/checkout" element={<Checkout formData={formData} shippingAddress={shippingAddress} setModalOpen={setModalOpen} setModalType={setModalType} cart={cart}/>} />
-          <Route path="/Order" element={<OrderSummary shippingAddress={shippingAddress} cart={cart}/>}/>
-          <Route path="/About" element={<About />}/>
-          <Route path="/Product/:name/:id" element={<Product/>}/>
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </Suspense>
+        <Suspense fallback={<Loader/>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Shop" element={<Shop input={input}/>} />
+            <Route path="/Cart" element={<Cart cart={cart} shippingAddress={shippingAddress} />} />
+            <Route path="/wishList" element={<WishList/>}/>
+            <Route path="/checkout" element={<Checkout shippingFormData={shippingFormData} shippingAddress={shippingAddress} cart={cart}/>} />
+            <Route path="/Order" element={<OrderSummary shippingAddress={shippingAddress} cart={cart}/>}/>
+            <Route path="/About" element={<About />}/>
+            <Route path="/Product/:name/:id" element={<Product/>}/>
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </Suspense>
 
       </div>
+      
       <Footer/>
 
     </div>

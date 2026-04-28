@@ -8,10 +8,11 @@
 }
 
 .orderSummary{
-  background: rgb(232, 230, 230);
+  background: var(--surface-muted-bg);
   padding: .4rem .8rem;
   >*{
     margin-top: .5rem;
   }
+  
 }
 

@@ -4,46 +4,67 @@
   box-sizing:border-box;
 }
 
+:root {
+  --text-color:black;
+  --on-accent-color: white;
+  --muted-color:grey; 
+  --accent-color:red;
+  --background-color:rgb(255, 255, 255);
+  --accent-background:red;
+  --surface-muted-bg:rgb(229, 227, 227);
+  --footer-background: rgb(17, 20, 27);
+  --shadow-color:rgb(154, 152, 152);
+  --input-padding-sm: 0.3rem;
+  --bulletColor:orange;
+}
+
+[data-theme="dark"] {
+  --text-color:white;
+  --on-accent-color: black;
+  --accent-color:blue;
+  --background-color:rgb(20, 20, 20);
+  --surface-muted-bg:rgb(68, 66, 66);
+  --accent-background:blue;
+  --footer-background:  rgb(79, 90, 111);
+  --shadow-color:rgb(64, 63, 63);
+  --bulletColor:rgb(46, 172, 235);
+}
+
 .app{
   overflow: hidden;
   overflow-wrap: break-word;
   position: relative;
   min-height: 100dvh;
-  user-select: none
+  user-select: none;
+  color: var(--text-color);
+  background: var(--background-color);
 }
 
 a{
   text-decoration: none;
-  color:black
+  color:var(--text-color);
 }
 
 input,select{
-  padding:.3rem;
+  padding:var(--input-padding-sm);
 }
 
 button{
   border:none;
   cursor:pointer;
-  &:active{
-    transform:scale(1.04);
-  }
+}
+
+button:active {
+  transform: scale(1.04);
 }
 
 small{
-  color:grey;
+  color:var(--muted-color);
 }
 
 .stheme{
-  background: red;
-  color:white;     
-}
-
-.displayImg{
-  width:100%;
-  height:max(60vh,200px);
-  object-fit: contain;
-  display: block;
-  margin:auto;
+  background:var(--accent-background);
+  color:var(--on-accent-color);
 }
 
 .middle{
@@ -64,7 +85,7 @@ small{
 }
 
 .card:hover {
-  background: rgb(213, 211, 211);
+  background: var(--surface-muted-bg);
 } 
 
 @media screen and (max-width:1000px)

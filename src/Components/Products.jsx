@@ -46,14 +46,14 @@ export const Products = ({products}) => {
               e.stopPropagation();
               dispatch(AddToCart(item));
               toast("item added to cart")}} className="stheme">
-              <p className={styles.plus}>+</p>
+              <p className={styles.plus}>➕</p>
               <p className={styles.add}>Add to Cart</p>
             </button>
-            <button onClick={(e)=>{
+            <button style={{background:'var(--accent-background)'}} onClick={(e)=>{
               e.stopPropagation();
               dispatch(addToWishList(item));
               toast("item added to wishlist")}}>
-              ❤️
+                🩶
             </button>
           </div>
         </div>

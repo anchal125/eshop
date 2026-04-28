@@ -14,12 +14,11 @@ export const Stairs = ({ children }) => {
   useGSAP(() => {
     const tl = gsap.timeline()
 
-    tl.to(stairsContainerRef.current, {
+    gsap.set(stairsContainerRef.current, {
       display: "block",
     })
 
     const stairs = stairsRef.current.children
-
     gsap.set(stairs, {
       y: 0,
     })
@@ -40,6 +39,8 @@ export const Stairs = ({ children }) => {
       opacity: 0,
       delay: 1.2,
     })
+
+    return () => tl.kill();
   }, [pathname])
 
   return (

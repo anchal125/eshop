@@ -49,7 +49,7 @@ export const Product = () => {
   return (
     <div className={styles.divisions}>
       <div className={styles.left}>
-        <img src={product.image} alt={product.title} />
+        <img loading='lazy' src={product.image} alt={product.title} />
       </div>
       <div className={styles.right}>
         <h2>{product.title}</h2>

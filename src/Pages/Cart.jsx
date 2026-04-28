@@ -1,15 +1,22 @@
-import cartimg from "../assets/cart.png";
 import styles from "./Cart.module.css";
 import { CartProduct } from '../Components/CartProduct';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { ModalContext } from "../Context/ModalContext";
+import { calculateShippingFee } from "../utils/helpers";
 
-export const Cart = ({cart,setModalOpen,shippingAddress,setModalType}) => {
-  const { products, totalPrice, totalQuantity,totalItems } = cart;
+
+export const Cart = ({cart,shippingAddress}) => {
+  const { products, totalPrice: cartPrice , totalQuantity,totalItems } = cart;
   const navigate = useNavigate();
+  const { setModalOpen } = useContext(ModalContext);
+
+  const shippingFee=calculateShippingFee(cartPrice)
+  const finalTotal = cart.totalPrice + shippingFee;
+
   const toCheckout=()=>{
-    setModalOpen(true);
-    setModalType("shipping")
+    setModalOpen("shipping");
     navigate("/checkout")
     setTimeout(()=>{
       toast.info("Fill your details to proceed")
@@ -19,7 +26,7 @@ export const Cart = ({cart,setModalOpen,shippingAddress,setModalType}) => {
   return (
     <div>
       {totalQuantity === 0 ? (
-        <img className="displayImg" src={cartimg} alt="empty cart" />
+        <big style={{marginTop:'1rem',display:'block',textAlign:"center"}}> Your cart is empty. Please add items to make me happy. 😃</big>
       ) : (
         <div className={styles.divisions}>
           <table>
@@ -42,10 +49,10 @@ export const Cart = ({cart,setModalOpen,shippingAddress,setModalType}) => {
           <div className={styles.right}>
             <b>Cart Total</b>
             <p>Total Items: {totalItems}</p>
-            <p>Shipping: Free</p>
+            <p>Shipping: ${shippingFee}</p>
             <p>Shipping to: <b>{shippingAddress}</b></p>
-            <span onClick={()=>{setModalOpen(true);setModalType("shipping")}} style={{color:'blue',cursor:"pointer"}}>Change Shipping Address</span>
-            <p>Total Price: ${totalPrice.toFixed(2)}</p>
+            <span onClick={()=>{setModalOpen("shipping")}} style={{color:'blue',cursor:"pointer"}}>Change Shipping Address</span>
+            <p>Total Price: ${finalTotal.toFixed(2)} </p>
             <button onClick={toCheckout} className="stheme">Proceed to Checkout</button>
           </div>
         </div>

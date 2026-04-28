@@ -12,7 +12,7 @@ export const checkPassword = (password) => {
   return { valid: true, error: "" };
 };
 
-export const checkFormData = (formData, setFormData) => {
+export const checkShippingFormData = (formData, setFormData) => {
   let valid = true;
   const updated = { ...formData };
 

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const error={color:'red',cursor:'pointer'}
+const error={color:'var(--accent-color)',cursor:'pointer'}
 
 export const Error = () => {
   return (

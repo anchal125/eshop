@@ -1,11 +1,14 @@
-import {useRef } from "react"
-import { UseOutsideClick } from "../hooks/UseOutsideClick"
-import { checkFormData } from "../utils/Checker"
+import {useRef, useState } from "react"
+import { checkShippingFormData } from "../utils/Checker"
+import { useContext } from "react"
+import { ModalContext } from "../Context/ModalContext"
+import styles from "./ShippingForm.module.css"
 
-export const ShippingForm = ({setShippingAddress,formData,setModalOpen,setFormData}) => {
+
+export const ShippingForm = ({setShippingFormData,shippingFormData}) => {
+  const [formData,setFormData]=useState(shippingFormData)
   const formRef=useRef()
-
-  UseOutsideClick(formRef,()=>setModalOpen(false))
+  const {setModalOpen}=useContext(ModalContext)
 
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.id]:{...formData[e.target.id],value:e.target.value}})
@@ -13,35 +16,37 @@ export const ShippingForm = ({setShippingAddress,formData,setModalOpen,setFormDa
 
   const handleSubmit=(e)=>{
     e.preventDefault() 
-    if(!checkFormData(formData,setFormData)) return  
+    if(!checkShippingFormData(formData,setFormData)) return  
     const data=Object.fromEntries(Object.values(formData).map(item=>[item.label,item.value]))
     console.log(data)
-    setShippingAddress(formData.Address.value+", "+formData.City.value+", "+formData.State.value+", "+formData.Country.value)
+    setShippingFormData(formData)
     setModalOpen(false) 
   } 
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} style={{ padding: '1rem', background: 'white' }}>
+    <form ref={formRef} onSubmit={handleSubmit} className={styles.form}>
       {Object.values(formData).map(item => {
         if (item.inputType === 'input') {
           return (
-            <div key={item.id} style={{marginBottom:".5rem"}}>
+            <div key={item.id} className={styles.fieldGroup}>
               <label htmlFor={item.id}>{item.label}: </label>
-              <input
-                value={item.value}
-                onChange={handleChange}
-                id={item.id}
-                type={item.type}
-                placeholder={item.placeholder}
-                required
-              />
-              <br />
-              {item.error && <small style={{color:"red"}}>{item.error}</small>}
+              <div>
+                <input
+                  value={item.value}
+                  onChange={handleChange}
+                  id={item.id}
+                  type={item.type}
+                  placeholder={item.placeholder}
+                  required
+                />
+                <br />
+                {item.error && <small className={styles.error}>{item.error}</small>}
+              </div>
             </div>
           );
         } else if (item.inputType === 'select') {
           return (
-            <div key={item.id} style={{marginBottom:".5rem"}}>
+            <div key={item.id} className={styles.fieldGroup}>
               <label htmlFor={item.id}>{item.label}: </label>
               <select
                 value={item.value}
@@ -62,7 +67,7 @@ export const ShippingForm = ({setShippingAddress,formData,setModalOpen,setFormDa
       
       })}
 
-      <button style={{ padding: '.3rem' }} className="stheme">
+      <button className={`stheme ${styles.button}`}>
         OK
       </button>
     </form>

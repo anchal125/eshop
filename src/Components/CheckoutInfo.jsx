@@ -1,35 +1,41 @@
-import { useState } from "react"
+import { useContext } from "react"
 import { Accordian } from "./Accordian"
+import { AccordianItem } from "./AccordianItem"
+import styles from './CheckoutInfo.module.css'
+import { ModalContext } from "../Context/ModalContext"
 
-export const CheckoutInfo = ({formData,setModalOpen,setModalType}) => {
-  const [active,setActive]=useState(2)
+export const CheckoutInfo = ({shippingFormData}) => {
+  const {setModalOpen}=useContext(ModalContext)
+
   return (
     <>
-      <span onClick={()=>{setModalOpen(true);setModalType('shipping')}} style={{color:'blue',cursor:"pointer"}}>Change Shipping/Billing Info</span>
-      <Accordian active={active} index={0} setActive={setActive}>
-        <h3>Billing Information</h3>
-        {active==0 && Object.values(formData).slice(0,4).map(item=>
-          <p><b>{item.label}</b>: {item.value}</p>
-        )}
-      </Accordian>
+      <span onClick={()=>{setModalOpen('shipping')}} style={{color:'blue',cursor:"pointer"}}>Change Shipping/Billing Info</span>
+      <Accordian defaultActive={2} multiple={false} >
+        <AccordianItem className={styles.accordianItem}>
+          <h3>Billing Information</h3>
+          {Object.values(shippingFormData).slice(0,4).map(item=>
+            <p><b>{item.label}</b>: {item.value}</p>
+          )}
+        </AccordianItem>
 
-      <Accordian active={active} index={1} setActive={setActive}>
-        <h3>Shipping Information</h3>
-        {active==1 && Object.values(formData).slice(4,).map(item=>
-          <p><b>{item.label}</b>: {item.value}</p>
-        )}
+        <AccordianItem className={styles.accordianItem}>
+          <h3>Shipping Information</h3>
+          {Object.values(shippingFormData).slice(4,).map(item=>
+            <p><b>{item.label}</b>: {item.value}</p>
+          )}
+        </AccordianItem>
+          
+        <AccordianItem className={styles.accordianItem}>
+          <h3>Payment Option</h3>
+          {<>
+            <label htmlFor="upi">UPI</label>
+            <input style={{ marginLeft:'.2rem'}} id="upi" type="radio" name="payment" required/>
+            <label htmlFor="cod"> COD</label>
+            <input style={{ marginLeft:'.2rem'}} id="cod" type="radio" name="payment" required/>
+          </>}
+        </AccordianItem>
       </Accordian>
-        
-      <Accordian active={active} index={2} setActive={setActive}>
-        <h3>Payment Option</h3>
-        {active==2 && <>
-          <label htmlFor="upi">UPI</label>
-          <input style={{ marginLeft:'.2rem'}} id="upi" type="radio" name="payment" required/>
-          <label htmlFor="cod"> COD</label>
-          <input style={{ marginLeft:'.2rem'}} id="cod" type="radio" name="payment" required/>
-        </>}
-        
-      </Accordian>
+      
     </>
   )
 }

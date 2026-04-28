@@ -10,13 +10,30 @@
   background: rgb(40, 39, 39,0.85);
 } 
 
-.closeModal{
-  cursor:pointer;
-  user-select: none;
-  position: absolute;
-  right:10px;
-  top:10px;
-  font-size: 1.4rem;
-  font-weight: bold;
+.loginModal{
+  background: rgb(238, 236, 236);
+  color:rgb(57, 51, 51);
+  position: relative;
+  width: max(25%,300px);
+  padding: 1.2rem 1rem 1rem;
+  >span{
+    position: absolute;
+    right: .6rem;
+    top:0;
+    font-size: x-large;
+  }
 }
 
+.shippingModal{
+  background: rgb(244, 254, 254);
+  color:black;
+  span{
+    line-height: .7;
+    background: var(--muted-color);
+    padding:0 .3rem .3rem;
+    position: absolute;
+    left: 1rem;
+    top:.5rem;
+    font-size: xx-large;
+  }
+}

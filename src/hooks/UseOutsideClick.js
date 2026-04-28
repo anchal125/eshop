@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-export const UseOutsideClick = (ref,callback) => {
+export const useOutsideClick = (ref,callback) => {
 
   useEffect(()=>{
 
@@ -13,7 +13,7 @@ export const UseOutsideClick = (ref,callback) => {
     document.addEventListener('mousedown',handleClick)
     return ()=>{
       document.removeEventListener('mousedown',handleClick)
-    }
+    }   
 
   },[ref,callback]) 
 

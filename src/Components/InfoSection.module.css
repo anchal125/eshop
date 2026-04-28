@@ -14,7 +14,7 @@
     &::after{
       content:"";
       position: absolute;
-      background: red;
+      background: var(--accent-background);
       top:0;
       left:0;
       height:100%;

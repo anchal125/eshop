@@ -1,12 +1,30 @@
 import styles from "./Modal.module.css"
 
-export const Modal = ({children,setModalOpen}) => {
+import { useOutsideClick } from "../hooks/UseOutsideClick";
+import { useRef } from "react";
+
+
+export const Modal = ({ children, className='', setModalOpen }) => {
+
+  const modalRef = useRef(null);
+
+  const closeModal = () => {
+    setModalOpen(null);
+  };
+
+  useOutsideClick(modalRef, closeModal);
 
   return (
     <div className={styles.modalOverlay}>
-      <span onClick={()=>setModalOpen(false)} className={styles.closeModal}>X</span>
-      {children}
+      <div
+        ref={modalRef}
+        className={`${className ? styles[className] : ""}`}
+      >
+        <span style={{ cursor: "pointer" }} onClick={closeModal}>
+          x
+        </span>
+        {children}
+      </div>
     </div>
-  )
-} 
-
+  );
+};

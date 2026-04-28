@@ -2,15 +2,23 @@ import { useNavigate } from "react-router-dom";
 import { CheckoutInfo } from "../Components/CheckoutInfo";
 import styles from "./Checkout.module.css";
 import { toast } from "react-toastify";
+import { calculateShippingFee } from "../utils/helpers";
 
 
-export const Checkout = ({formData,shippingAddress,setModalOpen,cart,setModalType}) => {
-  const { products, totalPrice } = cart
+export const Checkout = ({shippingFormData,shippingAddress,cart}) => {
+  const { products, totalPrice : cartPrice} = cart
   const navigate=useNavigate()
+  const isCartEmpty=cart.products.length===0
+  const shippingFee=calculateShippingFee(cartPrice)
+  const finalTotal = cart.totalPrice + shippingFee;
   const handleSubmit=(e)=>{
     e.preventDefault(); 
+    if(isCartEmpty) return
     if(shippingAddress){
-      navigate("/Order")
+      navigate("/Order", {
+        replace: true,
+        state: { checkout: true }
+      })
       toast.info("Order placed")
     }
     else{
@@ -24,7 +32,7 @@ export const Checkout = ({formData,shippingAddress,setModalOpen,cart,setModalTyp
       <h2>Checkout</h2>
       <div className={styles.divisions}>
         <div className={styles.checkoutLeft}>
-          <CheckoutInfo formData={formData} setModalOpen={setModalOpen} setModalType={setModalType}/>
+          <CheckoutInfo shippingFormData={shippingFormData}/>
         </div>
  
         <div className={styles.checkoutRight}>
@@ -33,7 +41,7 @@ export const Checkout = ({formData,shippingAddress,setModalOpen,cart,setModalTyp
             products.map((product) => (
               <div className={styles.product} key={product.id}>
                 <div className={styles.title}>
-                  <img src={product.image} alt={product.title} />
+                  <img loading='lazy' src={product.image} alt={product.title} />
                   <div className={styles.info}>
                     <p>{product.title}</p>
                     <small>${product.price.toFixed(2)} x {product.count}</small>
@@ -43,8 +51,19 @@ export const Checkout = ({formData,shippingAddress,setModalOpen,cart,setModalTyp
               </div>
            ))
          }
-          <b>Total Price: ${totalPrice.toFixed(2)}</b>
-          <button className="stheme">Place an Order</button>
+          <b>Total Price: ${finalTotal.toFixed(2)}</b>
+          <small>&nbsp;includes shipping</small>
+          <button
+            className={`stheme ${isCartEmpty ? styles.disabledBtn : ""}`}
+            onClick={() => {
+              if (isCartEmpty) {
+                toast.info("Please add items to cart");
+                return;
+              }
+            }}
+          >
+            Place an Order
+          </button>
         </div>
       </div>
       

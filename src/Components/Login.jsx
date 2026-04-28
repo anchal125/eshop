@@ -1,16 +1,16 @@
-import { useRef, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import styles from "./Login.module.css"
-import { UseOutsideClick } from "../hooks/UseOutsideClick"
 import { checkPassword } from "../utils/Checker"
 import { toast } from "react-toastify"
+import { ModalContext } from "../Context/ModalContext"
 
-export const Login = ({setModalOpen,setName}) => {
+export const Login = ({setName}) => {
   const [login,setLogin]=useState("Sign Up")
   const formRef=useRef()
   const nameRef=useRef()
   const passwordRef=useRef()
   const [passwordError,setPasswordError]=useState("")
-  UseOutsideClick(formRef,()=>setModalOpen(false))
+  const {setModalOpen}=useContext(ModalContext)
 
   const handleSubmit=(e)=>{
     e.preventDefault();
@@ -25,7 +25,7 @@ export const Login = ({setModalOpen,setName}) => {
   }
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className={styles.form} action="" style={{ padding: '1rem', background: 'white' }}>
+    <form ref={formRef} onSubmit={handleSubmit} className={styles.form} action="" style={{ padding: '1rem' }}>
 
       <h2>{login}</h2>  
 
@@ -61,13 +61,13 @@ export const Login = ({setModalOpen,setName}) => {
           placeholder="Enter your password"
           required
         />
-        {passwordError && <small style={{color:"red"}}>{passwordError}</small>}
+        {passwordError && <small style={{color:'var(--accent-color)'}}>{passwordError}</small>}
       </div>
       
 
       <button className="stheme">{login}</button>
 
-      <p>{login==="Sign Up"?"Already have an account?":"Don't have an account?"} <span onClick={()=>setLogin(login === "Sign Up" ? "Login" : "Sign Up")} style={{color:"red",cursor:"pointer"}}>{login==="Sign Up"?"Login":"Sing Up"}</span></p>
+      <p>{login==="Sign Up"?"Already have an account?":"Don't have an account?"} <span onClick={()=>setLogin(login === "Sign Up" ? "Login" : "Sign Up")} style={{color:"var(--accent-color)",cursor:"pointer"}}>{login==="Sign Up"?"Login":"Sing Up"}</span></p>
      
 
 

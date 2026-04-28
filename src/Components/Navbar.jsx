@@ -1,21 +1,21 @@
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FaSearch, FaShoppingCart, FaHeart } from "react-icons/fa";
 import styles from './Navbar.module.css';
 import { useSelector } from 'react-redux'
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { MdLightMode } from "react-icons/md";
+import { MdDarkMode } from "react-icons/md";
+import { ModalContext } from '../Context/ModalContext';
 
-export const Navbar = ({ input, setInput, setModalOpen, setModalType, name }) => {
-  const [tabIndex, setTabIndex] = useState(0)
+
+export const Navbar = ({ input, setInput, name, theme, setTheme }) => {
   const navigate = useNavigate()
-  const location = useLocation()
-  const { totalQuantity } = useSelector(state => state.cart)
+  const {setModalOpen}=useContext(ModalContext)
+  const { totalQuantity } = useSelector(state => state.cart) 
 
-  useEffect(() => {
-    if (location.pathname === "/") setTabIndex(0)
-    else if (location.pathname === "/Shop") setTabIndex(1)
-    else if (location.pathname === "/About") setTabIndex(2)
-    else setTabIndex()
-  }, [location.pathname])
+  const toggleTheme=()=>{
+    theme==='dark'?setTheme('light'):setTheme('dark')
+  }
 
   const handleSearch = () => {
     navigate("/Shop")
@@ -24,7 +24,7 @@ export const Navbar = ({ input, setInput, setModalOpen, setModalType, name }) =>
   return (
     <nav>
       <div className={styles.topdiv}>
-        <img src="/logo.png" alt="" />
+        <img loading='lazy' src="/logo.png" alt="" />
         <div className={styles.inputdiv}>
           <input value={input} type="text" placeholder='Search' onChange={e => setInput(e.target.value)} onKeyDown={e => {
             if (e.key == "Enter") {
@@ -35,10 +35,11 @@ export const Navbar = ({ input, setInput, setModalOpen, setModalType, name }) =>
         </div>
 
         <div className={styles.login}>
-          <Link to="/wishList"><FaHeart style={{color:"red"}}/></Link>
-          <Link className={styles.cart} to="/Cart"><FaShoppingCart style={{ color: "blue" }} />{totalQuantity > 0 ? <small className={`stheme ${styles.cartQuantity}`}>{totalQuantity}</small> : null}</Link>
+          <span onClick={toggleTheme} style={{cursor:'pointer'}}>{theme==='light'?<MdDarkMode size={18}/>:<MdLightMode size={18}/>}</span>
+          <NavLink to="/wishList"><FaHeart style={{color:"red"}}/></NavLink>
+          <NavLink className={styles.cart} to="/Cart"><FaShoppingCart style={{ color: "blue" }} />{totalQuantity > 0 ? <small className={`stheme ${styles.cartQuantity}`}>{totalQuantity}</small> : null}</NavLink>
           {name ? <span>Hello, {name}</span> :
-            <span onClick={() => { setModalOpen(true); setModalType("login") }} style={{ cursor: "pointer" }}>
+            <span onClick={() => { setModalOpen('login') }} style={{ cursor: "pointer" }}>
               Login|Register
             </span>
           }
@@ -46,26 +47,26 @@ export const Navbar = ({ input, setInput, setModalOpen, setModalType, name }) =>
       </div>
 
       <div className={styles.bottomdiv}>
-        <Link
+        <NavLink
           to="/"
-          style={tabIndex === 0 ? { color: "red", fontWeight: "bold" } : null}
+          style={({ isActive }) => isActive ? { color: "var(--accent-color)", fontWeight: "bold" } : undefined}
         >
           Home
-        </Link>
+        </NavLink>
 
-        <Link
+        <NavLink
           to="/Shop"
-          style={tabIndex === 1 ? { color: "red", fontWeight: "bold" } : null}
+          style={({ isActive }) => isActive ? { color: "var(--accent-color)", fontWeight: "bold" } : undefined}
         >
           Shop
-        </Link>
+        </NavLink>
 
-        <Link
+        <NavLink
           to="/About"
-          style={tabIndex === 2 ? { color: "red", fontWeight: "bold" } : null}
+          style={({ isActive }) => isActive ? { color: "var(--accent-color)", fontWeight: "bold" } : undefined}
         >
           About
-        </Link>
+        </NavLink>
       </div>
     </nav>
   )

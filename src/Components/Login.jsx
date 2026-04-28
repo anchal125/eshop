@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react"
 import styles from "./Login.module.css"
-import { checkPassword } from "../utils/Checker"
+import { checkPassword } from "../utils/checker"
 import { toast } from "react-toastify"
 import { ModalContext } from "../Context/ModalContext"
 

@@ -1,6 +1,6 @@
 import { Route, Routes} from 'react-router-dom'
 import { useLocalStorageSync } from './hooks/useLocalStorageSync'
-import { ShippingFormTemplate } from './utils/Data'
+import { ShippingFormTemplate } from './utils/data'
 import { Navbar } from './Components/Navbar'
 import { Footer } from './Components/Footer'
 import { useContext, useState } from 'react';

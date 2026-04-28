@@ -4,7 +4,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(SplitText,ScrollTrigger);
 
-import { categories} from "../utils/Data"
+import { categories} from "../utils/data"
 import shopping1 from "../assets/shopping1.png"
 import shopping2 from "../assets/shopping2.png"
 import shopping3 from "../assets/shopping3.png"

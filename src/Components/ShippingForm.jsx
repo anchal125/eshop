@@ -1,5 +1,5 @@
 import {useRef, useState } from "react"
-import { checkShippingFormData } from "../utils/Checker"
+import { checkShippingFormData } from "../utils/checker"
 import { useContext } from "react"
 import { ModalContext } from "../Context/ModalContext"
 import styles from "./ShippingForm.module.css"

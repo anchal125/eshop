@@ -1,4 +1,4 @@
-import { genderCategories } from "../utils/Data"
+import { genderCategories } from "../utils/data"
 import styles from './CategorySection.module.css'
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"

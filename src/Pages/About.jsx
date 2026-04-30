@@ -19,7 +19,7 @@ export const About = () => {
       duration: 1,
       autoAlpha: 0,
       color: "purple",
-      delay: 1,
+      delay: 2.5,
       stagger: {
         amount: .5,
         from: "random",

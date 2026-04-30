@@ -18,7 +18,6 @@ export const ShippingForm = ({setShippingFormData,shippingFormData}) => {
     e.preventDefault() 
     if(!checkShippingFormData(formData,setFormData)) return  
     const data=Object.fromEntries(Object.values(formData).map(item=>[item.label,item.value]))
-    console.log(data)
     setShippingFormData(formData)
     setModalOpen(false) 
   } 

@@ -30,7 +30,6 @@ export const Product = () => {
         response=await response.json()
         setProduct(response)
       } catch (error) {
-        console.log(error.messsage)
         navigate("/error")
       } finally{
         setLoading(false)

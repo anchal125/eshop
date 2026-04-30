@@ -31,7 +31,6 @@ export const Shop = ({ input }) => {
     : products;
 
   if (error) {
-    console.log(error.message)
     navigate("/error")
   }
 

@@ -1,6 +1,6 @@
 import styles from "./Modal.module.css"
 
-import { useOutsideClick } from "../hooks/UseOutsideClick";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 import { useRef } from "react";
 
 

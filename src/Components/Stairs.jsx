@@ -11,37 +11,46 @@ export const Stairs = ({ children }) => {
   const stairsRef = useRef()
   const pageRef = useRef()
 
-  useGSAP(() => {
-    const tl = gsap.timeline()
+  useGSAP(
+    () => {
+      const stairs = stairsRef.current.children
+      const page = pageRef.current
+      const container = stairsContainerRef.current
 
-    gsap.set(stairsContainerRef.current, {
-      display: "block",
-    })
+      // Prevent overlapping animations during rapid route changes.
+      gsap.killTweensOf(stairs)
+      gsap.killTweensOf(page)
+      gsap.killTweensOf(container)
 
-    const stairs = stairsRef.current.children
-    gsap.set(stairs, {
-      y: 0,
-    })
+      gsap.set(container, { display: "block" })
+      gsap.set(stairs, { y: 0, height: "100%" })
+      gsap.set(page, { opacity: 0 })
 
-    tl.from(stairs, {
-      height: 0,
-      stagger: -0.15,
-    }).to(stairs, {
-      y: "100%",
-      stagger: -0.15,
-    })
+      const tl = gsap.timeline()
 
-    tl.to(stairsContainerRef.current, {
-      display: "none",
-    })
-
-    gsap.from(pageRef.current, {
-      opacity: 0,
-      delay: 1.2,
-    })
-
-    return () => tl.kill();
-  }, [pathname])
+      tl.from(stairs, {
+        height: 0,
+        stagger: -0.15,
+      })
+        .to(stairs, {
+          y: "100%",
+          stagger: -0.15,
+        })
+        .to(container, {
+          display: "none",
+        })
+        .to(
+          page,
+          {
+            opacity: 1,
+            duration: 0.25,
+            clearProps: "opacity",
+          },
+          "-=0.2",
+        )
+    },
+    { dependencies: [pathname], revertOnUpdate: true },
+  )
 
   return (
     <div className={styles.stairsParent}>

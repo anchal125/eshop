@@ -21,13 +21,8 @@ export const OrderSummary = ({ shippingAddress, cart }) => {
 
   useEffect(() => {
     if (!checkout) {
-
-      const timer = setTimeout(() => {
-        toast.error("Please complete checkout first");
-        navigate("/checkout", { replace: true });
-      }, 3000);
-
-      return () => clearTimeout(timer);
+      toast.error("Please complete checkout first");
+      navigate("/checkout", { replace: true });
     }
   }, [checkout,navigate]);
 
@@ -47,7 +42,9 @@ export const OrderSummary = ({ shippingAddress, cart }) => {
     dispatch(ResetCart());
   }, [checkout, dispatch]);
 
-  if (!checkout) return null;
+  if (!checkout){
+    return null;
+  }
 
   return (
     <div className={styles.orderpg}>

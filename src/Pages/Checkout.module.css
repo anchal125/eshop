@@ -1,3 +1,7 @@
+.checkout {
+  flex: 1;
+}
+
 .divisions {
   margin-top: 0.6rem;
   display: flex;

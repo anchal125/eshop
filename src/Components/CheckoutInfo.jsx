@@ -4,7 +4,11 @@ import { AccordianItem } from "./AccordianItem";
 import styles from "./CheckoutInfo.module.css";
 import { ModalContext } from "../Context/ModalContext";
 
-export const CheckoutInfo = ({ shippingFormData }) => {
+export const CheckoutInfo = ({
+  shippingFormData,
+  setPaymentMethod,
+  paymentMethod,
+}) => {
   const { setModalOpen } = useContext(ModalContext);
 
   return (
@@ -48,16 +52,24 @@ export const CheckoutInfo = ({ shippingFormData }) => {
               <input
                 style={{ marginLeft: ".2rem" }}
                 id="upi"
+                value="upi"
                 type="radio"
                 name="payment"
+                checked={paymentMethod === "upi"}
+                onChange={(e) => setPaymentMethod(e.target.value)}
                 required
               />
               <label htmlFor="cod"> COD</label>
               <input
                 style={{ marginLeft: ".2rem" }}
                 id="cod"
+                value="cod"
                 type="radio"
                 name="payment"
+                checked={paymentMethod === "cod"}
+                onChange={(e) => {
+                  setPaymentMethod(e.target.value);
+                }}
                 required
               />
             </>

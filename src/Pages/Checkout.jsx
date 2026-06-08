@@ -3,16 +3,18 @@ import { CheckoutInfo } from "../Components/CheckoutInfo";
 import styles from "./Checkout.module.css";
 import { toast } from "react-toastify";
 import { calculateShippingFee } from "../utils/helpers";
+import { useState } from "react";
 
 export const Checkout = ({ shippingFormData, shippingAddress, cart }) => {
   const { products, totalPrice: cartPrice } = cart;
+  const [paymentMethod, setPaymentMethod] = useState(null);
   const navigate = useNavigate();
   const isCartEmpty = cart.products.length === 0;
   const shippingFee = calculateShippingFee(cartPrice);
   const finalTotal = cart.totalPrice + shippingFee;
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isCartEmpty) return;
+    if (isCartEmpty || !paymentMethod) return;
     if (shippingAddress) {
       navigate("/order", {
         replace: true,
@@ -24,12 +26,25 @@ export const Checkout = ({ shippingFormData, shippingAddress, cart }) => {
     }
   };
 
+  const handleplaceOrder = () => {
+    if (isCartEmpty) {
+      toast.error("Please add items to cart");
+    }
+    if (!paymentMethod) {
+      toast.error("Select a Payment Method");
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className={styles.checkout}>
       <h2>Checkout</h2>
       <div className={styles.divisions}>
         <div className={styles.checkoutLeft}>
-          <CheckoutInfo shippingFormData={shippingFormData} />
+          <CheckoutInfo
+            shippingFormData={shippingFormData}
+            setPaymentMethod={setPaymentMethod}
+            paymentMethod={paymentMethod}
+          />
         </div>
 
         <div className={styles.checkoutRight}>
@@ -51,13 +66,8 @@ export const Checkout = ({ shippingFormData, shippingAddress, cart }) => {
           <b>Total Price: ${finalTotal.toFixed(2)}</b>
           <small>&nbsp;includes shipping</small>
           <button
-            className={`accent ${isCartEmpty ? styles.disabledBtn : ""}`}
-            onClick={() => {
-              if (isCartEmpty) {
-                toast.info("Please add items to cart");
-                return;
-              }
-            }}
+            className={`accent ${isCartEmpty || !paymentMethod ? styles.disabledBtn : ""}`}
+            onClick={handleplaceOrder}
           >
             Place an Order
           </button>

@@ -3,22 +3,18 @@
 }
 
 .fieldGroup {
-  margin-bottom: 0.5rem;
+  margin: 0.8rem 0;
   display: flex;
   align-items: center;
-  gap:.5rem;
+  gap: 0.5rem;
 
-  div{
-    flex:1;
+  div {
+    flex: 1;
 
-    input{
-      width:100%;
+    input {
+      width: 100%;
     }
   }
-}
-
-.error {
-  color: var(--accent-color);
 }
 
 .button {

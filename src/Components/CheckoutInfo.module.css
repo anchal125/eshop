@@ -1,5 +1,11 @@
-.accordianItem{
+.accordianItem {
   box-shadow: 0px 0px 5px var(--shadow-color);
   margin-top: 1rem;
-  padding:.6rem;
+  padding: 0.6rem;
+
+  > button {
+    color: var(--text-color);
+    background: transparent;
+    float: right;
+  }
 }

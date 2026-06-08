@@ -12,7 +12,7 @@ export const OrderSummary = ({ shippingAddress, cart }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const checkout = location.state?.checkout;
 
   const [orderData, setOrderData] = useState(null);
@@ -24,7 +24,7 @@ export const OrderSummary = ({ shippingAddress, cart }) => {
       toast.error("Please complete checkout first");
       navigate("/checkout", { replace: true });
     }
-  }, [checkout,navigate]);
+  }, [checkout, navigate]);
 
   useEffect(() => {
     if (!checkout) return;
@@ -42,7 +42,7 @@ export const OrderSummary = ({ shippingAddress, cart }) => {
     dispatch(ResetCart());
   }, [checkout, dispatch]);
 
-  if (!checkout){
+  if (!checkout) {
     return null;
   }
 
@@ -60,28 +60,38 @@ export const OrderSummary = ({ shippingAddress, cart }) => {
 
       {orderData && (
         <div className={styles.orderSummary}>
-          <p><b>Order Summary</b></p>
+          <p>
+            <b>Order Summary</b>
+          </p>
           <p>Order no: {Date.now()}</p>
 
-          <p><b>Shipping info</b></p>
+          <p>
+            <b>Shipping info</b>
+          </p>
           <p>{shippingAddress}</p>
 
-          <p><b>Shipping Fee</b></p>
+          <p>
+            <b>Shipping Fee</b>
+          </p>
           <p>${orderData.shippingFee}</p>
 
-          <p><b>Items Ordered</b></p>
+          <p>
+            <b>Items Ordered</b>
+          </p>
           {orderData.items.map((item) => (
             <p key={item.id}>
               {item.title} x{item.count} <b>${item.price.toFixed(2)}</b>
             </p>
           ))}
 
-          <p><b>Total Price: ${orderData.totalPrice.toFixed(2)}</b></p>
+          <p>
+            <b>Total Price: ${orderData.totalPrice.toFixed(2)}</b>
+          </p>
         </div>
       )}
 
-      <Link to="/Shop">
-        <button className="stheme">Continue Shipping</button>
+      <Link to="/shop">
+        <button className="accent">Continue Shipping</button>
       </Link>
     </div>
   );

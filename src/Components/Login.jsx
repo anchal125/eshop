@@ -1,37 +1,47 @@
-import { useContext, useRef, useState } from "react"
-import styles from "./Login.module.css"
-import { checkPassword } from "../utils/checker"
-import { toast } from "react-toastify"
-import { ModalContext } from "../Context/ModalContext"
+import { useContext, useRef, useState } from "react";
+import styles from "./Login.module.css";
+import { checkPassword } from "../utils/checker";
+import { toast } from "react-toastify";
+import { ModalContext } from "../Context/ModalContext";
+import { ErrorMessage } from "./ErrorMessage";
 
-export const Login = ({setName}) => {
-  const [login,setLogin]=useState("Sign Up")
-  const formRef=useRef()
-  const nameRef=useRef()
-  const passwordRef=useRef()
-  const [passwordError,setPasswordError]=useState("")
-  const {setModalOpen}=useContext(ModalContext)
+export const Login = ({ setName }) => {
+  const [isLoginMode, setIsLoginMode] = useState(false);
+  const nameRef = useRef();
+  const passwordRef = useRef();
+  const [passwordError, setPasswordError] = useState("");
+  const { setModalOpen } = useContext(ModalContext);
 
-  const handleSubmit=(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-    let {valid,error}=checkPassword(passwordRef.current.value)
-    if(!valid){
-      setPasswordError(error)
-      return
+    let { valid, error } = checkPassword(passwordRef.current.value);
+
+    if (!valid) {
+      setPasswordError(error);
+      return;
     }
-    toast.success("login succesful")
-    setModalOpen(false)
-    setName(nameRef.current.value.split(" ")[0])
-  }
+
+    toast.success("login succesful");
+    setModalOpen(false);
+
+    if (!isLoginMode) {
+      setName(nameRef.current.value.split(" ")[0].slice(0, 10));
+    }
+  };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className={styles.form} action="" style={{ padding: '1rem' }}>
+    <form
+      onSubmit={handleSubmit}
+      className={styles.form}
+      action=""
+      style={{ padding: "1rem" }}
+    >
+      <h2 id="login-modal-title">{isLoginMode ? "Login" : "Sign Up"}</h2>
 
-      <h2>{login}</h2>  
-
-      {login === "Sign Up" && (
+      {!isLoginMode && (
         <div>
           <label htmlFor="name">Name</label>
+
           <input
             ref={nameRef}
             type="text"
@@ -44,6 +54,7 @@ export const Login = ({setName}) => {
 
       <div>
         <label htmlFor="email">Email</label>
+
         <input
           type="email"
           id="email"
@@ -51,26 +62,41 @@ export const Login = ({setName}) => {
           required
         />
       </div>
-      
+
       <div>
         <label htmlFor="password">Password</label>
+
         <input
+          style={
+            passwordError ? { borderColor: "var(--accent-color)" } : undefined
+          }
           ref={passwordRef}
           type="password"
           id="password"
           placeholder="Enter your password"
           required
+          aria-invalid={!!passwordError}
+          aria-describedby={passwordError ? "password-error" : undefined}
         />
-        {passwordError && <small style={{color:'var(--accent-color)'}}>{passwordError}</small>}
+
+        <ErrorMessage message={passwordError} id="password-error" />
       </div>
-      
 
-      <button className="stheme">{login}</button>
+      <button className="accent">{isLoginMode ? "Login" : "Sign Up"}</button>
 
-      <p>{login==="Sign Up"?"Already have an account?":"Don't have an account?"} <span onClick={()=>setLogin(login === "Sign Up" ? "Login" : "Sign Up")} style={{color:"var(--accent-color)",cursor:"pointer"}}>{login==="Sign Up"?"Login":"Sing Up"}</span></p>
-     
-
-
+      <p>
+        {isLoginMode ? "Don't have an account?" : "Already have an account?"}{" "}
+        <button
+          type="button"
+          onClick={() => setIsLoginMode(!isLoginMode)}
+          style={{
+            color: "var(--accent-color)",
+            cursor: "pointer",
+          }}
+        >
+          {isLoginMode ? "Sign Up" : "Login"}
+        </button>
+      </p>
     </form>
-  )
-}
+  );
+};

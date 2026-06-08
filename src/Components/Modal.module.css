@@ -1,39 +1,40 @@
-.modalOverlay{
+.modalOverlay {
   position: fixed;
   z-index: 100;
-  top:0;
-  left:0;
-  height:100dvh;
-  width:100%;
-  display:grid;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 100%;
+  display: grid;
   place-items: center;
-  background: rgb(40, 39, 39,0.85);
-} 
+  background: rgb(40, 39, 39, 0.85);
+}
 
-.loginModal{
+.loginModal {
   background: rgb(238, 236, 236);
-  color:rgb(57, 51, 51);
+  color: rgb(57, 51, 51);
   position: relative;
-  width: max(25%,300px);
-  padding: 1.2rem 1rem 1rem;
-  >span{
+  width: max(25%, 300px);
+  padding: 1.2rem 1rem 0.5rem;
+  .closeBtn {
+    background: transparent;
     position: absolute;
-    right: .6rem;
-    top:0;
+    right: 0.6rem;
+    top: 0;
     font-size: x-large;
   }
 }
 
-.shippingModal{
+.shippingModal {
   background: rgb(244, 254, 254);
-  color:black;
-  span{
-    line-height: .7;
+  color: black;
+  .closeBtn {
+    display:block;
     background: var(--muted-color);
-    padding:0 .3rem .3rem;
+    padding: 0 0.15rem 0.15rem;
     position: absolute;
     left: 1rem;
-    top:.5rem;
+    top: 0.5rem;
     font-size: xx-large;
   }
 }

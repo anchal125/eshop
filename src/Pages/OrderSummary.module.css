@@ -1,18 +1,16 @@
-.orderpg>*{
-  margin-top: .7rem;
+.orderpg > * {
+  margin-top: 0.7rem;
 }
 
-.orderpg button{
-  margin-top: .7rem;
-  padding: .4rem;
+.orderpg button {
+  margin-top: 0.7rem;
+  padding: 0.4rem;
 }
 
-.orderSummary{
+.orderSummary {
   background: var(--surface-muted-bg);
-  padding: .4rem .8rem;
-  >*{
-    margin-top: .5rem;
+  padding: 0.4rem 0.8rem;
+  > * {
+    margin-top: 0.5rem;
   }
-  
 }
-

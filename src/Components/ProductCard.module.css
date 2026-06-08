@@ -1,0 +1,25 @@
+.productCard {
+  position: relative;
+  box-shadow: 0 0 0.3rem var(--shadow-color);
+  text-align: center;
+  padding: 0.7rem;
+
+  .productLink {
+    display: block;
+    padding: 0.65rem 0.65rem 2.2rem;
+    outline-offset: 0.5rem;
+
+    img {
+      height: 200px;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    .title {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+}

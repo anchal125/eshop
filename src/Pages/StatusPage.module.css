@@ -1,0 +1,32 @@
+.page {
+  display: grid;
+  place-items: center;
+  min-height: 60dvh;
+  text-align: center;
+}
+
+.content {
+  max-width: 28rem;
+}
+
+.code {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.content h1 {
+  margin-bottom: 0.75rem;
+}
+
+.content p {
+  color: var(--muted-color);
+  margin-bottom: 1.25rem;
+}
+
+.link {
+  color: var(--accent-color);
+  cursor: pointer;
+  font-weight: 600;
+}

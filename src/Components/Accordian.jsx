@@ -1,7 +1,11 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
-export const Accordian = ({defaultActive=null,multiple=false,children}) => {
-  const [active,setActive]=useState(defaultActive)
+export const Accordian = ({
+  defaultActive = null,
+  multiple = false,
+  children,
+}) => {
+  const [active, setActive] = useState(defaultActive);
   return (
     <div>
       {React.Children.map(children, (child, index) =>
@@ -9,10 +13,9 @@ export const Accordian = ({defaultActive=null,multiple=false,children}) => {
           active,
           setActive,
           index,
-          multiple
-        })
+          multiple,
+        }),
       )}
     </div>
-  )
-}
- 
+  );
+};

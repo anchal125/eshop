@@ -1,36 +1,37 @@
-*{
-  padding:0;
-  margin:0;
-  box-sizing:border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 :root {
-  --text-color:black;
+  --text-color: black;
   --on-accent-color: white;
-  --muted-color:grey; 
-  --accent-color:red;
-  --background-color:rgb(255, 255, 255);
-  --accent-background:red;
-  --surface-muted-bg:rgb(229, 227, 227);
+  --muted-color: rgb(98, 96, 96);
+  --accent-color: #9f01f4;
+  --background-color: rgb(255, 255, 255);
+  --accent-background: #9f01f4;
+  --surface-muted-bg: rgb(229, 227, 227);
   --footer-background: rgb(17, 20, 27);
-  --shadow-color:rgb(154, 152, 152);
+  --shadow-color: rgb(154, 152, 152);
   --input-padding-sm: 0.3rem;
-  --bulletColor:orange;
+  --bulletColor: orange;
 }
 
 [data-theme="dark"] {
-  --text-color:white;
+  --text-color: white;
   --on-accent-color: black;
-  --accent-color:blue;
-  --background-color:rgb(20, 20, 20);
-  --surface-muted-bg:rgb(68, 66, 66);
-  --accent-background:blue;
-  --footer-background:  rgb(79, 90, 111);
-  --shadow-color:rgb(64, 63, 63);
-  --bulletColor:rgb(46, 172, 235);
+  --muted-color: rgb(147, 143, 143);
+  --accent-color: #65e2fb;
+  --background-color: rgb(20, 20, 20);
+  --surface-muted-bg: rgb(68, 66, 66);
+  --accent-background: #65e2fb;
+  --footer-background: #acb1b9;
+  --shadow-color: rgb(64, 63, 63);
+  --bulletColor: rgb(46, 172, 235);
 }
 
-.app{
+.app {
   overflow: hidden;
   overflow-wrap: break-word;
   position: relative;
@@ -38,37 +39,45 @@
   user-select: none;
   color: var(--text-color);
   background: var(--background-color);
+  display: flex;
+  flex-direction: column;
 }
 
-a{
+a {
   text-decoration: none;
-  color:var(--text-color);
+  color: var(--text-color);
 }
 
-input,select{
-  padding:var(--input-padding-sm);
+input,
+select {
+  padding: var(--input-padding-sm);
 }
 
-button{
-  border:none;
-  cursor:pointer;
+button {
+  border: none;
+  cursor: pointer;
 }
 
 button:active {
   transform: scale(1.04);
 }
 
-small{
-  color:var(--muted-color);
+small {
+  color: var(--muted-color);
 }
 
-.stheme{
-  background:var(--accent-background);
-  color:var(--on-accent-color);
+.accent {
+  background: var(--accent-background);
+  color: var(--on-accent-color);
 }
 
-.middle{
-  padding:1rem 7rem 230px;
+main {
+  padding: 1rem 7rem;
+  flex: 1;
+  display: flex;
+  > div {
+    flex: 1;
+  }
 }
 
 .cards {
@@ -86,50 +95,47 @@ small{
 
 .card:hover {
   background: var(--surface-muted-bg);
-} 
+}
 
-@media screen and (max-width:1000px)
-{
-  nav{
+@media screen and (max-width: 1000px) {
+  header {
     padding: 1rem 4rem !important;
   }
-  .middle{
-    padding: 1rem 4rem 230px !important;
+  main {
+    padding: 1rem 4rem !important;
   }
 }
 
-@media screen and (max-width:768px){
-  html{
-    font-size:15px;
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 15px;
   }
-  nav{
+  header {
     padding: 1rem 2rem !important;
   }
-  .middle{
-    padding: 1rem 2rem 220px !important;
+  main {
+    padding: 1rem 2rem !important;
   }
-
 }
 
-@media screen and (max-width:600px){
-  html{
-    font-size:14px;
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 14px;
   }
-  nav{
+  header {
     padding: 1rem 1rem !important;
   }
-  .middle{
-    padding: 1rem 1rem 283px !important;
+  main {
+    padding: 1rem 1rem !important;
   }
 }
 
-@media screen and (max-width:450px){
-  html{
-    font-size:13.5px;
+@media screen and (max-width: 450px) {
+  html {
+    font-size: 13.5px;
   }
 
-  .middle{
+  .middle {
     padding: 1rem 1rem 310px !important;
   }
-
 }

@@ -17,15 +17,15 @@ export const checkShippingFormData = (formData, setFormData) => {
   const updated = { ...formData };
 
   Object.values(updated).forEach((field) => {
-    field.error = ""; 
-    field.value=field.value.trim()
+    field.error = "";
+    field.value = field.value.trim();
 
-    if(field.value==""){
+    if (field.value == "") {
       field.error = `${field.label} can not be empty`;
-      valid=false
+      valid = false;
     }
 
-    if (field.id.includes("Name") ) {
+    if (field.id.includes("Name")) {
       const nameRegex = /^[A-Za-z\s]+$/;
       if (!nameRegex.test(field.value)) {
         field.error = `${field.label} can only contain letters and spaces`;
@@ -35,7 +35,7 @@ export const checkShippingFormData = (formData, setFormData) => {
         valid = false;
       }
     }
-  
+
     if (field.type === "email") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(field.value)) {

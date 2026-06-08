@@ -1,31 +1,30 @@
-.cards{
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+.cards {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   margin-top: 8rem !important;
 
-  .card{
+  .card {
     display: flex;
     flex-direction: column;
-    gap: 1.1rem; 
-    padding:.9rem;
+    gap: 1.1rem;
+    padding: 0.9rem;
     text-align: center;
-    box-shadow: 0 0 .3rem rgb(154, 152, 152);
+    box-shadow: 0 0 0.3rem rgb(154, 152, 152);
     position: relative;
 
-    &::after{
-      content:"";
+    &::after {
+      content: "";
       position: absolute;
       background: var(--accent-background);
-      top:0;
-      left:0;
-      height:100%;
-      width:.2rem;
-      transition: all .5s;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0.2rem;
+      transition: all 0.5s;
     }
 
-    &:hover::after{
-      width:100%;
-      height:.2rem;
-      
+    &:hover::after {
+      width: 100%;
+      height: 0.2rem;
     }
   }
 }

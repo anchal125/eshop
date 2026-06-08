@@ -1,73 +1,155 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaSearch, FaShoppingCart, FaHeart } from "react-icons/fa";
-import styles from './Navbar.module.css';
-import { useSelector } from 'react-redux'
-import { useContext } from 'react';
-import { MdLightMode } from "react-icons/md";
-import { MdDarkMode } from "react-icons/md";
-import { ModalContext } from '../Context/ModalContext';
+import { MdLightMode, MdDarkMode } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { useContext } from "react";
 
+import styles from "./Navbar.module.css";
+import { ModalContext } from "../Context/ModalContext";
 
 export const Navbar = ({ input, setInput, name, theme, setTheme }) => {
-  const navigate = useNavigate()
-  const {setModalOpen}=useContext(ModalContext)
-  const { totalQuantity } = useSelector(state => state.cart) 
+  const navigate = useNavigate();
+  const { setModalOpen } = useContext(ModalContext);
+  const { totalQuantity } = useSelector((state) => state.cart);
 
-  const toggleTheme=()=>{
-    theme==='dark'?setTheme('light'):setTheme('dark')
-  }
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   const handleSearch = () => {
-    navigate("/Shop")
-  }
+    navigate("/shop");
+  };
 
   return (
-    <nav>
+    <header>
       <div className={styles.topdiv}>
-        <img loading='lazy' src="/logo.png" alt="" />
+        <img src="/logo.png" alt="Store logo" />
+
         <div className={styles.inputdiv}>
-          <input value={input} type="text" placeholder='Search' onChange={e => setInput(e.target.value)} onKeyDown={e => {
-            if (e.key == "Enter") {
-              handleSearch()
+          <input
+            value={input}
+            type="text"
+            placeholder="Search"
+            aria-label="Search products"
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch();
+              }
+            }}
+          />
+
+          <button
+            type="button"
+            onClick={handleSearch}
+            aria-label="Search"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              background: "transparent",
+            }}
+          >
+            <FaSearch
+              style={{ color: "rgb(164, 8, 123)" }}
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+
+        <div className={styles.sideLinks}>
+          <button
+            type="button"
+            aria-label={`Switch to ${
+              theme === "light" ? "dark" : "light"
+            } mode`}
+            title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            onClick={toggleTheme}
+            style={{ cursor: "pointer" }}
+          >
+            {theme === "light" ? (
+              <MdDarkMode size={18} aria-hidden="true" />
+            ) : (
+              <MdLightMode size={18} aria-hidden="true" />
+            )}
+          </button>
+
+          <NavLink to="/wishList" aria-label="Wishlist">
+            <FaHeart style={{ color: "red" }} aria-hidden="true" />
+          </NavLink>
+
+          <NavLink
+            className={styles.cart}
+            to="/cart"
+            aria-label={`Cart (${totalQuantity} items)`}
+          >
+            <FaShoppingCart style={{ color: "blue" }} aria-hidden="true" />
+
+            {totalQuantity > 0 && (
+              <small className={`accent ${styles.cartQuantity}`}>
+                {totalQuantity}
+              </small>
+            )}
+          </NavLink>
+
+          {name ? (
+            <span>Hello, {name}</span>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setModalOpen("login")}
+              style={{ cursor: "pointer" }}
+            >
+              Login | Register
+            </button>
+          )}
+        </div>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <div className={styles.bottomdiv}>
+          <NavLink
+            to="/"
+            style={({ isActive }) =>
+              isActive
+                ? {
+                    color: "var(--accent-color)",
+                    fontWeight: "bold",
+                  }
+                : undefined
             }
-          }} />
-          <FaSearch style={{ color: "rgb(164, 8, 123)", cursor: "pointer" }} onClick={handleSearch} />
+          >
+            Home
+          </NavLink>
+
+          <NavLink
+            to="/shop"
+            style={({ isActive }) =>
+              isActive
+                ? {
+                    color: "var(--accent-color)",
+                    fontWeight: "bold",
+                  }
+                : undefined
+            }
+          >
+            Shop
+          </NavLink>
+
+          <NavLink
+            to="/about"
+            style={({ isActive }) =>
+              isActive
+                ? {
+                    color: "var(--accent-color)",
+                    fontWeight: "bold",
+                  }
+                : undefined
+            }
+          >
+            About
+          </NavLink>
         </div>
-
-        <div className={styles.login}>
-          <span onClick={toggleTheme} style={{cursor:'pointer'}}>{theme==='light'?<MdDarkMode size={18}/>:<MdLightMode size={18}/>}</span>
-          <NavLink to="/wishList"><FaHeart style={{color:"red"}}/></NavLink>
-          <NavLink className={styles.cart} to="/Cart"><FaShoppingCart style={{ color: "blue" }} />{totalQuantity > 0 ? <small className={`stheme ${styles.cartQuantity}`}>{totalQuantity}</small> : null}</NavLink>
-          {name ? <span>Hello, {name}</span> :
-            <span onClick={() => { setModalOpen('login') }} style={{ cursor: "pointer" }}>
-              Login|Register
-            </span>
-          }
-        </div>
-      </div>
-
-      <div className={styles.bottomdiv}>
-        <NavLink
-          to="/"
-          style={({ isActive }) => isActive ? { color: "var(--accent-color)", fontWeight: "bold" } : undefined}
-        >
-          Home
-        </NavLink>
-
-        <NavLink
-          to="/Shop"
-          style={({ isActive }) => isActive ? { color: "var(--accent-color)", fontWeight: "bold" } : undefined}
-        >
-          Shop
-        </NavLink>
-
-        <NavLink
-          to="/About"
-          style={({ isActive }) => isActive ? { color: "var(--accent-color)", fontWeight: "bold" } : undefined}
-        >
-          About
-        </NavLink>
-      </div>
-    </nav>
-  )
-}
+      </nav>
+    </header>
+  );
+};

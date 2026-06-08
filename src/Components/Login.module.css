@@ -1,14 +1,14 @@
-.form{
-  display:flex;
+.form {
+  display: flex;
   flex-direction: column;
-  gap:.7rem;
-  width:100%;
+  gap: 0.7rem;
+  width: 100%;
 
-  input{
-    width:100%;
+  input {
+    width: 100%;
   }
 
-  button{
-    padding:.5rem;
+  button {
+    padding: 0.5rem;
   }
 }

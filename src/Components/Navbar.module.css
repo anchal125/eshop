@@ -1,73 +1,81 @@
-nav{
-  padding:1rem 7rem;
-  box-shadow: 0px 0px .7rem var(--shadow-color);
-  position:sticky;
-  top:0;
-  z-index:10;
+header {
+  padding: 1rem 7rem;
+  box-shadow: 0px 0px 0.7rem var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background: var(--background-color);
-  
-  .bottomdiv a{
-    font-size: 1.1rem;
-    &:hover{
-      font-family:Verdana, Geneva, Tahoma, sans-serif;
-      color:var(--accent-color);
-    }
-  }
-
-  img{
-    width:2.5rem;
-    border:1px solid rgb(236, 229, 229);
-    border-radius: 50%;
-  }
 }
 
-.topdiv{
-  display:flex;
+nav .bottomdiv a {
+  font-size: 1.1rem;
+}
+
+nav .bottomdiv a:hover {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--accent-color);
+}
+
+header img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit:contain;
+  border: 1px solid rgb(236, 229, 229);
+  border-radius: 50%;
+}
+
+.topdiv {
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap:1.5rem;
-  row-gap: .8rem;
+  column-gap: 1.5rem;
+  row-gap: 0.8rem;
   justify-content: space-evenly;
 }
 
-.inputdiv{
-  flex:1;
-  display:flex;
-  border:1px solid rgb(210, 209, 209);
-  padding:.4rem;
-  gap:.3rem;
+.inputdiv {
+  flex: 1;
+  display: flex;
+  border: 1px solid rgb(210, 209, 209);
+  padding: 0.4rem;
+  gap: 0.3rem;
   align-items: center;
-
-  input{
-    flex:1;
-    border:0;
-    background: transparent;
-    outline:0;
-    color:var(--text-color);
-  }
 }
 
-.login{
-  display: flex;
-  align-items: center;
-  gap:.4rem;
+.inputdiv input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  outline: 0;
+  color: var(--text-color);
 }
 
-.bottomdiv{
+.sideLinks {
   display: flex;
-  gap:.7rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sideLinks button {
+  background: transparent;
+  color: var(--text-color);
+}
+
+.bottomdiv {
+  display: flex;
+  gap: 0.7rem;
   justify-content: center;
-  margin-top:.8rem;
+  margin-top: 0.8rem;
 }
 
-.cart{
+.cart {
   position: relative;
 }
 
-.cartQuantity{
+.cartQuantity {
   position: absolute;
-  top:-70%;
-  left:50%;
+  top: -70%;
+  left: 50%;
   border-radius: 50%;
-  padding:.1rem .3rem;
+  padding: 0.1rem 0.3rem;
 }

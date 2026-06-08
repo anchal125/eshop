@@ -7,7 +7,7 @@ export const AccordianItem = ({
   children,
   index = 0,
   multiple,
-  className=""
+  className = "",
 }) => {
   const [expand, setExpand] = useState(false);
 
@@ -23,20 +23,21 @@ export const AccordianItem = ({
 
   return (
     <div className={className}>
-      <div onClick={handleClick}>
+      <button
+        type="button"
+        onClick={handleClick}
+        aria-expanded={isOpen}
+        aria-label={isOpen ? "Collapse section" : "Expand section"}
+      >
         {isOpen ? (
-          <IoIosArrowUp
-            style={{ float: "right", cursor: "pointer" }}
-          />
+          <IoIosArrowUp aria-hidden="true" />
         ) : (
-          <IoIosArrowDown
-            style={{ float: "right", cursor: "pointer" }}
-          />
+          <IoIosArrowDown aria-hidden="true" />
         )}
-      </div>
-
+      </button>
       {children[0]}
       {isOpen && children[1]}
     </div>
   );
 };
+

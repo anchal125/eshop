@@ -1,83 +1,81 @@
-.about{
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  max-width:600px;
+.about {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  max-width: 600px;
   margin: auto;
-  color:white;
+  color: white;
   position: relative;
   z-index: 1;
 
-  .bg{
+  .bg {
     position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100dvh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
     object-fit: cover;
-    z-index:-2;
+    z-index: -2;
   }
 
-  .overlay{
+  .overlay {
     z-index: -1;
     position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100dvh;
-    background: rgb(8, 7, 7,.6);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background: rgb(8, 7, 7, 0.6);
   }
 
-  h1{
+  h1 {
     margin: 1rem auto 0rem;
-    width:fit-content;
+    width: fit-content;
     position: relative;
-    &::after{
+    &::after {
       content: "";
-      left:0;
-      width:70%;
-      top:102%;
+      left: 0;
+      width: 70%;
+      top: 102%;
       position: absolute;
       background: linear-gradient(to right, rgb(79, 79, 79), rgb(164, 8, 123));
-      height:.23rem;
-      transition: all .5s;
+      height: 0.23rem;
+      transition: all 0.5s;
     }
 
-    &:hover::after{
-      width:100%;
+    &:hover::after {
+      width: 100%;
     }
-  } 
-
-  p{
-    font-size: 1.1rem;
-    margin:1rem auto 0;
   }
 
-  .imgBox{
+  p {
+    font-size: 1.1rem;
+    margin: 1rem auto 0;
+  }
+
+  .imgBox {
     margin: 1.5rem auto 0;
-    border:2px solid black;
+    border: 2px solid black;
     overflow: hidden;
-    height:50vh;
+    height: 50vh;
     max-height: 600px;
-    opacity:0;
+    opacity: 0;
     transform: scale(0);
     animation: expandImg 1.5s 1s forwards;
 
-    img{
-      width:100%;
+    img {
+      width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: all .9s;
-      &:hover{
-        transform:scale(1.5);
+      transition: all 0.9s;
+      &:hover {
+        transform: scale(1.5);
       }
     }
-
-   
   }
 }
 
-@keyframes expandImg{
-  100%{
+@keyframes expandImg {
+  100% {
     transform: scale(1);
-    opacity:1;
+    opacity: 1;
   }
 }

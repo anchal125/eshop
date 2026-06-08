@@ -19,6 +19,7 @@ Products are fetched from [Fake Store API](https://fakestoreapi.com/products).
 - Route-based navigation with lazy-loaded pages
 - Toast notifications and modal-based interactions
 - GSAP-based UI transitions/animations
+- Accessibility-focused UI with keyboard navigation, semantic HTML, proper form labeling, and screen reader support
 
 ## Tech Stack
 

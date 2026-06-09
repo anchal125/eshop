@@ -23,7 +23,7 @@ export const Navbar = ({ input, setInput, name, theme, setTheme }) => {
   return (
     <header>
       <div className={styles.topdiv}>
-        <img src="/logo.png" alt="Store logo" />
+        <img src="/logo.png" alt="Eshop" />
 
         <div className={styles.inputdiv}>
           <input

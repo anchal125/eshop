@@ -28,7 +28,10 @@ Products are fetched from [Fake Store API](https://fakestoreapi.com/products).
 - Redux Toolkit + React Redux
 - React Router DOM
 - GSAP
+- React Icons
+- CSS Modules
 - React Toastify
+- Cloudinary (Image hosting & optimization)
 
 ## Getting Started
 

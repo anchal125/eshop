@@ -4,10 +4,10 @@ import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useContext } from "react";
 
-import styles from "./Navbar.module.css";
+import styles from "./Header.module.css";
 import { ModalContext } from "../Context/ModalContext";
 
-export const Navbar = ({ input, setInput, name, theme, setTheme }) => {
+export const Header = ({ input, setInput, name, theme, setTheme }) => {
   const navigate = useNavigate();
   const { setModalOpen } = useContext(ModalContext);
   const { totalQuantity } = useSelector((state) => state.cart);
@@ -23,7 +23,9 @@ export const Navbar = ({ input, setInput, name, theme, setTheme }) => {
   return (
     <header>
       <div className={styles.topdiv}>
-        <img src="/logo.png" alt="Eshop" />
+        <NavLink to="/">
+          <img src="/logo.png" alt="Eshop" />
+        </NavLink>
 
         <div className={styles.inputdiv}>
           <input

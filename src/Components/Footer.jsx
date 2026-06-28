@@ -17,51 +17,69 @@ export const Footer = () => {
         </div>
         <div className={styles.quicklinks}>
           <h4>Quick Links</h4>
-          <div className={styles.links}>
-            <Link to="/">Home</Link>
-            <Link to="/shop">Shop</Link>
-            <Link to="/about">About</Link>
-          </div>
+          <nav aria-label="Footer navigation">
+            <ul className={styles.links}>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/shop">Shop</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+            </ul>
+          </nav>
         </div>
         <div className="social">
           <h4>Follow us</h4>
-          <div className={styles.icons}>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Navigate to Facebook"
-            >
-              <FaFacebookF aria-hidden="true" size={24} color="#4267B2" />
-            </a>
+          <nav aria-label="Social media links">
+            <ul className={styles.icons}>
+              <li>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Navigate to Facebook"
+                >
+                  <FaFacebookF aria-hidden="true" size={24} color="#4267B2" />
+                </a>
+              </li>
 
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Navigate to Twitter"
-            >
-              <FaTwitter aria-hidden="true" size={24} color="#1DA1F2" />
-            </a>
+              <li>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Navigate to Twitter"
+                >
+                  <FaTwitter aria-hidden="true" size={24} color="#1DA1F2" />
+                </a>
+              </li>
 
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Navigate to Instagram"
-            >
-              <FaInstagram aria-hidden="true" size={24} color="#E1306C" />
-            </a>
+              <li>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Navigate to Instagram"
+                >
+                  <FaInstagram aria-hidden="true" size={24} color="#E1306C" />
+                </a>
+              </li>
 
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Navigate to LinkedIn"
-            >
-              <FaLinkedinIn aria-hidden="true" size={24} color="#0077B5" />
-            </a>
-          </div>
+              <li>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Navigate to LinkedIn"
+                >
+                  <FaLinkedinIn aria-hidden="true" size={24} color="#0077B5" />
+                </a>
+              </li>
+            </ul>
+          </nav>
           <div className={styles.inputdiv}>
             <input
               type="email"

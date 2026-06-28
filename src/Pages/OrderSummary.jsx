@@ -2,20 +2,17 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./OrderSummary.module.css";
 import { ResetCart } from "../redux/cartSlice";
 import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
-import { calculateShippingFee } from "../utils/helpers";
 import { toast } from "react-toastify";
 
-export const OrderSummary = ({ shippingAddress, cart }) => {
+export const OrderSummary = ({ shippingAddress }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
 
-  const checkout = location.state?.checkout;
-
-  const [orderData, setOrderData] = useState(null);
+  const { checkout, orderData } = location.state || {};
 
   const { width, height } = useWindowSize();
 
@@ -28,17 +25,6 @@ export const OrderSummary = ({ shippingAddress, cart }) => {
 
   useEffect(() => {
     if (!checkout) return;
-
-    const cartPrice = cart.totalPrice;
-    const shipping = calculateShippingFee(cartPrice);
-
-    const snapshot = {
-      items: JSON.parse(JSON.stringify(cart.products)),
-      shippingFee: shipping,
-      totalPrice: cartPrice + shipping,
-    };
-
-    setOrderData(snapshot);
     dispatch(ResetCart());
   }, [checkout, dispatch]);
 
@@ -63,7 +49,7 @@ export const OrderSummary = ({ shippingAddress, cart }) => {
           <p>
             <b>Order Summary</b>
           </p>
-          <p>Order no: {Date.now()}</p>
+          <p>Order no: {orderData.orderId}</p>
 
           <p>
             <b>Shipping info</b>

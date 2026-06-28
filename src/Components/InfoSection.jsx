@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import { serviceCards } from "../utils/data";
+import { serviceCards } from "../constants";
 import styles from "./InfoSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);

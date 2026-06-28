@@ -19,7 +19,7 @@ nav .bottomdiv a:hover {
 header img {
   width: 2.5rem;
   height: 2.5rem;
-  object-fit:contain;
+  object-fit: contain;
   border: 1px solid rgb(236, 229, 229);
   border-radius: 50%;
 }

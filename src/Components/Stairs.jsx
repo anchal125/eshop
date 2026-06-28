@@ -46,7 +46,7 @@ export const Stairs = ({ children }) => {
             duration: 0.02,
             clearProps: "opacity",
           },
-          "-=0.5",
+          "-=0.8",
         );
     },
     { dependencies: [pathname], revertOnUpdate: true },

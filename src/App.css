@@ -53,6 +53,10 @@ select {
   padding: var(--input-padding-sm);
 }
 
+ul {
+  list-style: none;
+}
+
 button {
   border: none;
   cursor: pointer;

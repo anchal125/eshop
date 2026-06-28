@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { useLocalStorageSync } from "./hooks/useLocalStorageSync";
-import { ShippingFormTemplate } from "./utils/data";
-import { Navbar } from "./Components/Navbar";
-import { Footer } from "./Components/Footer";
+import { ShippingFormTemplate } from "./constants";
+import { Header } from "./Components/Header";
 import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import { Modal } from "./Components/Modal";
@@ -88,7 +87,7 @@ function App() {
         </Modal>
       )}
 
-      <Navbar
+      <Header
         name={name}
         input={input}
         setInput={setInput}
@@ -117,9 +116,7 @@ function App() {
             />
             <Route
               path="/order"
-              element={
-                <OrderSummary shippingAddress={shippingAddress} cart={cart} />
-              }
+              element={<OrderSummary shippingAddress={shippingAddress} />}
             />
             <Route path="/about" element={<About />} />
             <Route path="/product/:name/:id" element={<Product />} />

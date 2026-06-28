@@ -35,9 +35,9 @@ export const serviceCards = [
   },
 ];
 
-import men from "../assets/men.png";
-import women from "../assets/women.png";
-import kid from "../assets/kid.png";
+import men from "./assets/men.png";
+import women from "./assets/women.png";
+import kid from "./assets/kid.png";
 
 export const genderCategories = [
   {
@@ -144,3 +144,32 @@ export const ShippingFormTemplate = {
     value: "Maharashtra",
   },
 };
+
+export const heroImages = [
+  {
+    avifLow:
+      "https://res.cloudinary.com/dbnfaajnx/image/upload/q_auto:low/v1781565997/shopping1_plnjwz.avif",
+    avifGood:
+      "https://res.cloudinary.com/dbnfaajnx/image/upload/q_auto:good/v1781565997/shopping1_plnjwz.avif",
+    avifBest:
+      "https://res.cloudinary.com/dbnfaajnx/image/upload/q_auto:best/v1781565997/shopping1_plnjwz.avif",
+  },
+
+  {
+    avifLow:
+      "https://res.cloudinary.com/dbnfaajnx/image/upload/q_auto:low/v1781565996/shopping3_awfqbb.avif",
+    avifGood:
+      "https://res.cloudinary.com/dbnfaajnx/image/upload/q_auto:good/v1781565996/shopping3_awfqbb.avif",
+    avifBest:
+      "https://res.cloudinary.com/dbnfaajnx/image/upload/q_auto:best/v1781565996/shopping3_awfqbb.avif",
+  },
+
+  {
+    avifLow:
+      "https://res.cloudinary.com/dbnfaajnx/image/upload/q_auto:low/v1781565996/shopping2_j1w5xa.avif",
+    avifGood:
+      "https://res.cloudinary.com/dbnfaajnx/image/upload/q_auto:good/v1781565996/shopping2_j1w5xa.avif",
+    avifBest:
+      "https://res.cloudinary.com/dbnfaajnx/image/upload/q_auto:best/v1781565996/shopping2_j1w5xa.avif",
+  },
+];

@@ -4,10 +4,8 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
-import { categories } from "../utils/data";
-import shopping1 from "../assets/shopping1.png";
-import shopping2 from "../assets/shopping2.png";
-import shopping3 from "../assets/shopping3.png";
+import { heroImages as images } from "../constants";
+import { categories } from "../constants";
 import styles from "./Home.module.css";
 import { InfoSection } from "../Components/InfoSection";
 import { CategorySection } from "../Components/CategorySection";
@@ -20,8 +18,6 @@ import { HiCursorClick } from "react-icons/hi";
 import { useGSAP } from "@gsap/react";
 import { useTextAnimation } from "../hooks/useTextAnimation";
 import { Footer } from "../Components/Footer";
-
-const images = [shopping1, shopping2, shopping3];
 
 export const Home = () => {
   const { products, loading, error } = useGetProducts();
@@ -63,7 +59,11 @@ export const Home = () => {
       const nextImg =
         activeRef.current === 1 ? img2Ref.current : img1Ref.current;
 
-      nextImg.src = images[nextIndex];
+      nextImg.querySelector("img").src = images[nextIndex].avifBest;
+
+      nextImg.querySelectorAll("source")[0].srcset = images[nextIndex].avifLow;
+
+      nextImg.querySelectorAll("source")[1].srcset = images[nextIndex].avifGood;
 
       gsap.set(nextImg, { opacity: 0, scale: 1.1, x: "100%" });
 
@@ -115,13 +115,35 @@ export const Home = () => {
 
         <div className={styles.right}>
           <div className={styles.imageWrapper}>
-            <img
-              ref={img1Ref}
-              src={images[0]}
-              alt=""
-              className={styles.image}
-            />
-            <img ref={img2Ref} alt="" className={styles.image} />
+            <picture ref={img1Ref} className={styles.picture}>
+              <source
+                srcSet={images[0].avifLow}
+                type="image/avif"
+                media="(max-width:640px)"
+              />
+
+              <source
+                srcSet={images[0].avifGood}
+                type="image/avif"
+                media="(max-width:1920px)"
+              />
+
+              <source srcSet={images[0].avifBest} type="image/avif" />
+
+              <img
+                fetchPriority="high"
+                src={images[0].avifGood}
+                className={styles.image}
+                alt=""
+              />
+            </picture>
+
+            <picture ref={img2Ref} className={styles.picture}>
+              <source srcSet="" type="image/avif" />
+              <source srcSet="" type="image/avif" />
+              <img className={styles.image} alt="" />
+            </picture>
+
             <div className={styles.gradientOverlay}></div>
           </div>
           <div className={styles.text}>

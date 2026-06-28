@@ -18,7 +18,15 @@ export const Checkout = ({ shippingFormData, shippingAddress, cart }) => {
     if (shippingAddress) {
       navigate("/order", {
         replace: true,
-        state: { checkout: true },
+        state: {
+          checkout: true,
+          orderData: {
+            items: structuredClone(cart.products),
+            shippingFee: calculateShippingFee(cart.totalPrice),
+            totalPrice: cart.totalPrice + calculateShippingFee(cart.totalPrice),
+            orderId: Date.now(),
+          },
+        },
       });
       toast.info("Order placed");
     } else {

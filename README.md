@@ -68,8 +68,4 @@ npm run deploy
 
 Make sure your repository and Pages settings are configured correctly before deploying.
 
-## Notes
 
-- App state is persisted with `localStorage`.
-- Product data depends on external API availability.
-- Routing is configured in `src/App.jsx`.

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Products } from "../Components/Products";
 import styles from "../Components/Products.module.css";
 import { useGetProducts } from "../hooks/useGetProducts";
-import { Loader } from "../Components/Loader";
+import { Loader, Products } from "../Components";
 import { useNavigate } from "react-router-dom";
 import { useTextAnimation } from "../hooks/useTextAnimation";
 

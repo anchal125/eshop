@@ -7,17 +7,19 @@ gsap.registerPlugin(SplitText, ScrollTrigger);
 import { heroImages as images } from "../constants";
 import { categories } from "../constants";
 import styles from "./Home.module.css";
-import { InfoSection } from "../Components/InfoSection";
-import { CategorySection } from "../Components/CategorySection";
-import { Products } from "../Components/Products";
 import { useGetProducts } from "../hooks/useGetProducts";
 import { Link, useNavigate } from "react-router-dom";
-import { ScrollText } from "../Components/ScrollText";
 import { useEffect, useState, useRef } from "react";
 import { HiCursorClick } from "react-icons/hi";
 import { useGSAP } from "@gsap/react";
 import { useTextAnimation } from "../hooks/useTextAnimation";
-import { Footer } from "../Components/Footer";
+import {
+  Footer,
+  Products,
+  InfoSection,
+  CategorySection,
+  ScrollText,
+} from "../Components";
 
 export const Home = () => {
   const { products, loading, error } = useGetProducts();

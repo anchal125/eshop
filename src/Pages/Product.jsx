@@ -4,7 +4,7 @@ import { AddToCart } from "../redux/cartSlice";
 import { HiMiniShoppingCart } from "react-icons/hi2";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { Loader } from "../Components/Loader";
+import { Loader } from "../Components";
 import { toast } from "react-toastify";
 
 export const Product = () => {

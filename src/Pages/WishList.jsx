@@ -8,7 +8,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { toast } from "react-toastify";
 import { useRef } from "react";
-import { ProductCard } from "../Components/ProductCard";
+import { ProductCard } from "../Components";
 
 export const WishList = () => {
   const containerRef = useRef(null);

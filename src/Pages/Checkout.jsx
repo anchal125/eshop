@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { CheckoutInfo } from "../Components/CheckoutInfo";
+import { CheckoutInfo } from "../Components";
 import styles from "./Checkout.module.css";
 import { toast } from "react-toastify";
 import { calculateShippingFee } from "../utils/helpers";

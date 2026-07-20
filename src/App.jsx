@@ -1,16 +1,18 @@
 import { Route, Routes } from "react-router-dom";
 import { useLocalStorageSync } from "./hooks/useLocalStorageSync";
 import { ShippingFormTemplate } from "./constants";
-import { Header } from "./Components/Header";
 import { useContext, useState } from "react";
 import { useSelector } from "react-redux";
-import { Modal } from "./Components/Modal";
-import { ShippingForm } from "./Components/ShippingForm";
-import { Login } from "./Components/Login";
 import { Suspense, lazy } from "react";
-import { Loader } from "./Components/Loader";
+import {
+  Loader,
+  Modal,
+  Login,
+  ShippingForm,
+  Header,
+  CustomCursor,
+} from "./Components";
 import { ModalContext } from "./Context/ModalContext";
-import { CustomCursor } from "./Components/CustomCursor";
 import { deriveAddress } from "./utils/helpers";
 
 const Home = lazy(() =>

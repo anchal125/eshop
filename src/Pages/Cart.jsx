@@ -1,5 +1,5 @@
 import styles from "./Cart.module.css";
-import { CartProduct } from "../Components/CartProduct";
+import { CartProduct } from "../Components";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useContext } from "react";

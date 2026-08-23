@@ -66,6 +66,11 @@ header img {
   gap: 0.7rem;
   justify-content: center;
   margin-top: 0.8rem;
+
+  a.active {
+    color: var(--accent-color);
+    font-weight: bold;
+  }
 }
 
 .cart {

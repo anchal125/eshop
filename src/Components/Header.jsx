@@ -111,42 +111,21 @@ export const Header = ({ input, setInput, name, theme, setTheme }) => {
         <div className={styles.bottomdiv}>
           <NavLink
             to="/"
-            style={({ isActive }) =>
-              isActive
-                ? {
-                    color: "var(--accent-color)",
-                    fontWeight: "bold",
-                  }
-                : undefined
-            }
+            className={({ isActive }) => (isActive ? styles.active : "")}
           >
             Home
           </NavLink>
 
           <NavLink
             to="/shop"
-            style={({ isActive }) =>
-              isActive
-                ? {
-                    color: "var(--accent-color)",
-                    fontWeight: "bold",
-                  }
-                : undefined
-            }
+            className={({ isActive }) => (isActive ? styles.active : "")}
           >
             Shop
           </NavLink>
 
           <NavLink
+            className={({ isActive }) => (isActive ? styles.active : "")}
             to="/about"
-            style={({ isActive }) =>
-              isActive
-                ? {
-                    color: "var(--accent-color)",
-                    fontWeight: "bold",
-                  }
-                : undefined
-            }
           >
             About
           </NavLink>
